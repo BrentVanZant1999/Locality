@@ -1,0 +1,22 @@
+body {
+ padding: 0;
+ margin: 0;
+
+}
+html, body, #container {
+height: 100%;
+overflow: hidden;
+width: 100%;
+}
+#mainMap  {
+ width: auto;
+ height: 100%;
+}
+.logo-img{
+  position:absolute;
+  top: 6px;
+  left: 50%;
+  z-index: 9999;
+  width:100px;
+  height:45px;
+}
