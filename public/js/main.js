@@ -183,7 +183,7 @@ function startDatabaseQuery() {
       var title = data.val().title;
       var org = data.val().org;
       var type = data.val().type;
-      var endTime = 5;  //data.val().endTime;
+      var endTime = data.val().endTime;
       var lat = data.val().lat;
       var lng = data.val().lng;
       var description = data.val().description;
@@ -216,6 +216,7 @@ function createEventMarker(lat, lng, titleIn, orgIn, typeIn, timeIn, descriptIn)
         time: timeIn,
         icon: socialIcon //ideally logic should be here TODO check to see if this can be done.
       }).on('click', handleMarkerClick);
+            newMarker.addTo(socialEvents);
     }
     break;
     case(2):
@@ -229,6 +230,7 @@ function createEventMarker(lat, lng, titleIn, orgIn, typeIn, timeIn, descriptIn)
         time: timeIn,
         icon: sportingIcon
       }).on('click', handleMarkerClick);
+            newMarker.addTo(sportingEvents);
     }
     break;
     case(3):
@@ -242,6 +244,7 @@ function createEventMarker(lat, lng, titleIn, orgIn, typeIn, timeIn, descriptIn)
         time: timeIn,
         icon: academicIcon
       }).on('click', handleMarkerClick);
+            newMarker.addTo(academicEvents);
     }
     break;
     case(4):
@@ -255,11 +258,40 @@ function createEventMarker(lat, lng, titleIn, orgIn, typeIn, timeIn, descriptIn)
         time: timeIn,
         icon: marketIcon
       }).on('click', handleMarkerClick);
+      newMarker.addTo(marketEvents);
+    }
+    break;
+    case(5):
+    {
+      newMarker = new eventMarker([lat, lng],{
+        clickable: true,
+        title: titleIn,
+        org: orgIn,
+        type: typeIn,
+        description: descriptIn,
+        time: timeIn,
+        icon: techIcon
+      }).on('click', handleMarkerClick);
+      newMarker.addTo(techEvents);
+    }
+    break;
+    case(6):
+    {
+      newMarker = new eventMarker([lat, lng],{
+        clickable: true,
+        title: titleIn,
+        org: orgIn,
+        type: typeIn,
+        description: descriptIn,
+        time: timeIn,
+        icon: healthIcon
+      }).on('click', handleMarkerClick);
+      newMarker.addTo(healthEvents);
     }
     break;
   }
   //adds the marker to the main marker group created at the beggining of this file
-  newMarker.addTo(markerGroupEvents);
+
 }
 
 /*
@@ -314,7 +346,7 @@ function writeUserEvent() {
   var titleInput = document.getElementById("titleEventInput");
   var orgInput = document.getElementById("organizationEventInput");
   var typeInput = document.getElementById("typeEventInput") ;
-  var durationInput = document.getElementById("durationEventInput");
+  var timeInput = document.getElementById("timeEventInput");
   var descriptionInput = document.getElementById("descriptionEventInput");
   eventsRef.push ({
    title: titleInput.value,
@@ -322,6 +354,7 @@ function writeUserEvent() {
    description: descriptionInput.value,
    lat: tempLat,
    lng: tempLng,
+   endTime: timeInput,
    type: parseInt(typeInput.value),
    org: orgInput.value
 });

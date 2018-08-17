@@ -24,7 +24,12 @@ var tempLng = 0;
  *  A marker would have to be added to a layer which has already been added to
  *  the map in order to be seen
  */
-var markerGroupEvents = L.layerGroup().addTo(mymap);
+var sportingEvents = L.layerGroup().addTo(mymap);
+var socialEvents = L.layerGroup().addTo(mymap);
+var healthEvents = L.layerGroup().addTo(mymap);
+var techEvents = L.layerGroup().addTo(mymap);
+var academicEvents = L.layerGroup().addTo(mymap);
+var marketEvents = L.layerGroup().addTo(mymap);
 
 //global scope variable meant to be used for referencing temporary marker layers
 var markerGroupUI;
