@@ -1,11 +1,12 @@
 //constants declerations
 const locateZoom = 17;
 const maxMapZoom = 18;
-
+var curLat = 32.88025;
+var curLng = -117.23752;
 /* Creates a map object, sets its viewpoint and zoom.
  * mymap - a reference to the map the application centers on
  */
-const mymap = L.map('mainMap').setView([32.88025,-117.23752],locateZoom);
+const mymap = L.map('mainMap').setView([curLat,curLng],locateZoom);
 
 //a boolean used to tell if whether or not the user has entered the event
 //creation modal

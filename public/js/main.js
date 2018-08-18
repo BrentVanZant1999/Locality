@@ -1,5 +1,10 @@
 
-
+/*
+ * Constant Declerations
+ */
+var eventsLocationRef = firebase.database().ref('eventsLocations');
+var geoFire;
+var searchRadius = 2;
 /*
  * Give the locator button the property:
  * when clicked - call funtion locateClientUser()
@@ -84,8 +89,8 @@ function createNewEventMarker() {
       draggable:true,
       icon:creatingIcon
   }).addTo(markerGroupUI);
-  //handle drag events
-  markerUI.on('dragend', function(event){
+      //handle drag events
+      markerUI.on('dragend', function(event){
       var userCreateEventMarker = event.target;
   });
 }
@@ -160,6 +165,8 @@ initApp = function() {
        var email = user.email;
        var uid = user.uid;
        firebase.database();
+       eventsLocationRef = firebase.database().ref('eventsLocations');
+       geoFire = new GeoFire(eventsLocationRef);
        writeUserData(uid, email, displayName);
        startDatabaseQuery();
     }
@@ -176,21 +183,27 @@ initApp = function() {
  * fixed. TODO figure out a way to load events in chunks based off location
  */
 function startDatabaseQuery() {
-  var myUserId = firebase.auth().currentUser.uid;
-  var currentEvents = firebase.database().ref('events');
-  var fetchEvents = function(eventsRef) {
-    eventsRef.on('child_added', function(data) {
-      var title = data.val().title;
-      var org = data.val().org;
-      var type = data.val().type;
-      var endTime = data.val().endTime;
-      var lat = data.val().lat;
-      var lng = data.val().lng;
-      var description = data.val().description;
-      createEventMarker(lat,lng,title,org,type,endTime,description);
-    });
-  }
-  fetchEvents(currentEvents);
+
+  var geoQuery = geoFire.query({
+    center: [curLat, curLng],
+    radius: searchRadius
+  });
+  var onKeyEnteredRegistration = geoQuery.on("key_entered", function(key, location) {
+    var eventRef = firebase.database().ref('events/' + key);
+      eventRef.on('value', function(snapshot) {
+        var title = snapshot.val().title;
+        var org = snapshot.val().org;
+        var type = snapshot.val().type;
+        var endTime = snapshot.val().endTime;
+        var lat = location[0];
+        var lng =  location[1];
+        var description = snapshot.val().description;
+        createEventMarker(lat,lng,title,org,type,endTime,description);
+      });
+  });
+  var onReadyRegistration = geoQuery.on("ready", function() {
+    geoQuery.cancel();
+  });
 }
 
 /*
@@ -313,7 +326,7 @@ function validateEventInput() {
   var titleInput = document.getElementById("titleEventInput");
   var orgInput = document.getElementById("organizationEventInput");
   var typeInput = document.getElementById("typeEventInput") ;
-  var durationInput = document.getElementById("durationEventInput");
+  var timeInput = document.getElementById("timeEventInput");
   var descriptionInput = document.getElementById("descriptionEventInput");
 
   if (titleInput.value === ""){
@@ -328,8 +341,8 @@ function validateEventInput() {
     alert("Event type needed");
     return false;
   }
-  else if (durationInput.value == 0){
-    alert("Non zero hour amount needed.");
+  else if (timeInput.value === ""){
+    alert("End time needed");
     return false;
   }
   return true;
@@ -348,17 +361,23 @@ function writeUserEvent() {
   var typeInput = document.getElementById("typeEventInput") ;
   var timeInput = document.getElementById("timeEventInput");
   var descriptionInput = document.getElementById("descriptionEventInput");
-  eventsRef.push ({
+  //one api call
+  var eventID = eventsRef.push ({
    title: titleInput.value,
    owner: myUserName,
    description: descriptionInput.value,
-   lat: tempLat,
-   lng: tempLng,
    endTime: timeInput,
    type: parseInt(typeInput.value),
    org: orgInput.value
-});
+ }).getKey();
+  //one api call
+  geoFire.set(eventID, [curLat, curLng]).then(function() {
+  console.log("Provided key has been added to GeoFire");
+    }, function(error) {
+  console.log("Error: " + error);
+  });
 }
+
 
 /*
  * write to firebase user data passed in as arguments.
