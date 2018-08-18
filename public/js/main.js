@@ -5,80 +5,6 @@
 var eventsLocationRef = firebase.database().ref('eventsLocations');
 var geoFire;
 var searchRadius = 2;
-/*
- * Give the locator button the property:
- * when clicked - call funtion locateClientUser()
- */
-$('#locator').on('click', function(){
-  locateClientUser();
-});
-
-/*
- * Give the eventCreateButton  the property:
- * when clicked while in the event creation modal do nothing
- * when not in the modal check to see if a location has been locationfound
- * and if so show the modal. If not prompt user to setup a location.
- */
-$('#eventCreateButton').on('click', function(){
-  if (inModal === false) {
-    if (hasLocation === false) {
-      createNewEventMarker();
-      toggleButtons();
-    }
-    else {
-      $('#eventCreateModal').modal('show');
-      var latLng = markerUI.getLatLng();
-      tempLng = latLng.lng;
-      tempLat = latLng.lat;
-      inModal = true;
-      toggleButtons();
-    }
-  }
-});
-
-/*
- * Give the eventCreateButton  the property:
- * when clicked remove the ui layer and exit the event creation process.
- */
-$('#cancelEventCreation').on('click', function(){
-  mymap.removeLayer(markerGroupUI);
-  hasLocation=false;
-  inModal=false;
-});
-
-/*
- * Give the eventCreateButton the property:
- * when clicked check if the form is correct and if so remove the ui marker and
- * call writeUserEvent to write the data to firebase.
- */
-$('#submitEvent').on('click', function(){
-  console.log("Firing")
-  if (validateEventInput()) {
-    mymap.removeLayer(markerGroupUI);
-    writeUserEvent();
-    hasLocation=false;
-    inModal=false;
-  }
-});
-
-/*
- * Give the eventCreateButton the property:
- * when clicked call the cancel button function
- */
-$('#eventCancelButton').on('click', function(){
-  cancelButton();
-});
-
-/*
- * Change the buttons display back to the normal display and remove the ui
- * marker
- */
-function cancelButton(){
-  toggleButtons();
-  mymap.removeLayer(markerGroupUI);
-  inModal = false;
-  hasLocation = false;
-}
 
 /*
  * Creates the marker that users use to plan where there event will take place
@@ -107,6 +33,8 @@ function updateEventModal(title,organization,description,type) {
   document.getElementById("eventTypePlace").classList.remove('fa-volleyball-ball');
   document.getElementById("eventTypePlace").classList.remove('fa-tag');
   document.getElementById("eventTypePlace").classList.remove('fa-users');
+  document.getElementById("eventTypePlace").classList.remove('fa-laptop');
+  document.getElementById("eventTypePlace").classList.remove('fa-heart');
   switch(type){
     case(1):
     {
@@ -128,30 +56,20 @@ function updateEventModal(title,organization,description,type) {
       document.getElementById("eventTypePlace").classList.add('fa-tag');
     }
     break;
+    case(5):
+    {
+      document.getElementById("eventTypePlace").classList.add('fa-laptop');
+    }
+    break;
+    case(6):
+    {
+      document.getElementById("eventTypePlace").classList.add('fa-heart');
+    }
+    break;
   }
 }
 
-/*
- * function to toggle buttons
- * works by removing styles and adding styles to make the buttons match whatever
- * functionality they are supposed to have at any given time.
- */
-function toggleButtons(){
-    if (hasLocation === false){
-      document.getElementById("eventCreateButtonIcon").classList.remove('fa-plus');
-      document.getElementById("eventCreateButtonIcon").classList.add('fa-check');
-      document.getElementById("eventCancelButton").classList.remove('invis');
-      document.getElementById("eventCancelButton").classList.add('vis');
-      hasLocation = true;
-    }
-    else {
-      document.getElementById("eventCreateButtonIcon").classList.remove('fa-check');
-      document.getElementById("eventCreateButtonIcon").classList.add('fa-plus');
-      document.getElementById("eventCancelButton").classList.remove('vis');
-      document.getElementById("eventCancelButton").classList.add('invis');
-      hasLocation = false;
-    }
-}
+
 
 /*
  * Handles the user state
@@ -371,7 +289,7 @@ function writeUserEvent() {
    org: orgInput.value
  }).getKey();
   //one api call
-  geoFire.set(eventID, [curLat, curLng]).then(function() {
+  geoFire.set(eventID, [tempLat, tempLng]).then(function() {
   console.log("Provided key has been added to GeoFire");
     }, function(error) {
   console.log("Error: " + error);

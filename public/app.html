@@ -48,10 +48,23 @@
     </div>
     <span id="locator" class="btn unique-color-dark btn-circle-locate"><i class="fa fa-compass fa-lg"></i></span>
   </div>
+
+  <!--                          -->
   <div class="modal fade" id="eventCreateModal" tabindex="-1" role="dialog" data-backdrop="static" data-keyboard="false" aria-labelledby="myModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered" role="document">
-        <div class="modal-content">
-          <form class="text-center border border-light p-5">
+      <div class="modal-content">
+        <div class="container">
+          <div class="header">
+            <h1>Create Event</h1>
+            <h3>Event Type</h1>
+            <div class="card-type">
+              <div class="card-icon"><img src="css/pic_trulli.png" alt="Italian Trulli"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
     <p class="h4 mb-4">Create an Event</p>
     <input type="text" id="titleEventInput" class="form-control mb-2" placeholder="Event name">
     <input type="text" id="organizationEventInput" class="form-control mb-2" placeholder="Event organization">
@@ -64,7 +77,8 @@
           <option value="2">Sporting</option>
           <option value="3">Academic</option>
           <option value="4">Market</option>
-		   <option value="4">Tech</option>
+		      <option value="5">Tech</option>
+          <option value="6">Health</option>
         </select>
       </div>
       <div class = "col">
@@ -84,10 +98,11 @@
         <button id="submitEvent" class="btn btn-info btn-block">Submit</button>
       </div>
     </div>
-</form>
         </div>
     </div>
 </div>
+<!--                          -->
+
 <div class="modal fade right" id="modalEventInfo" tabindex="-1" role="dialog" aria-labelledby="modalEventInfo" aria-hidden="true"  data-backdrop="false">
         <div class="modal-dialog modal-dialog-centered modal-notify modal-info" role="document">
             <div class="modal-content">
@@ -116,4 +131,5 @@
 <script src="js/mapInit.js"></script>
 <script src="js/iconInit.js"></script>
 <script src="js/main.js"></script>
+<script src="js/buttonInit.js"></script>
 </html>
