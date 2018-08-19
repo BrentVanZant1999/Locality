@@ -1,6 +1,12 @@
 body {
   padding: 0;
   margin: 0;
+  background: #f2f2f2;
+  font-size: 14px;
+  font-family: 'Open Sans', sans-serif;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 html, body, #container {
   height: 100%;
@@ -36,42 +42,37 @@ html, body, #container {
 .vis{
   visibility: visible;
 }
-.btn-circle {
+.button-circle {
   position:relative;
-  z-index: 9999;
+  z-index: 1000;
   width: 70px;
   height: 70px;
-  padding: 10px 16px;
   font-size: 24px;
-  border-radius: 35px;
+  border-radius: 50%;
   text-align:center;
-  line-height:200%;
+  line-height:300%;
+  background-color: #24305E;
+  color: #fff;
 }
-.btn-circle-locate {
+.button-circle-locate {
   position:absolute;
-  top: 70px;
-  left: 7px;
-  z-index: 9999;
+  top: 78px;
+  left: 12px;
+  z-index: 1000;
   width: 28px;
   height: 28px;
   text-align: center;
-  padding: 6px 0;
   font-size: 12px;
-  line-height: 1.2;
+  line-height:245%;
   border-radius: 14px;
+  background-color: #24305E;
+  color: #fff;
 }
 .btn-left{
   float:left;
 }
 .btn-right{
   float:right;
-}
-background: #f2f2f2;
-font-size: 14px;
-font-family: 'Open Sans', sans-serif;
-line-height: 1;
--webkit-font-smoothing: antialiased;
--moz-osx-font-smoothing: grayscale;
 }
 .formContainer {
 display: none; /* Hidden by default */
