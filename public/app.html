@@ -13,8 +13,8 @@
 	<link rel="stylesheet" href="https://unpkg.com/leaflet@1.3.3/dist/leaflet.css"
    integrity="sha512-Rksm5RenBEKSKFjgI3a41vrjkw4EVPlJ3+OiI65vTjIdo9brlAacEuKOiQ5OFh7cOI1bkDwLqdLw3Zg0cRJAAQ=="
    crossorigin=""/>
-	<!-- JQuery -->
-	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+   <!-- JQuery -->
+ 	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 	<!-- Bootstrap tooltips -->
 	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.13.0/umd/popper.min.js"></script>
 	<!-- Bootstrap core JavaScript -->
@@ -49,23 +49,65 @@
     <span id="locator" class="btn unique-color-dark btn-circle-locate"><i class="fa fa-compass fa-lg"></i></span>
   </div>
 
-  <!--                          -->
-  <div class="modal fade" id="eventCreateModal" tabindex="-1" role="dialog" data-backdrop="static" data-keyboard="false" aria-labelledby="myModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered" role="document">
-      <div class="modal-content">
-        <div class="container">
-          <div class="header">
-            <h1>Create Event</h1>
-            <h3>Event Type</h1>
-            <div class="card-type">
-              <div class="card-icon"><img src="css/pic_trulli.png" alt="Italian Trulli"></div>
+  <!--
+  <div class="modal fade" id="eventCreateModal" tabindex="-1" role="dialog" aria-labelledby="eventCreateModal" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">-->
+        <div class='formContainer'>
+          <form class='formModal'>
+            <header class='formHeader'>
+              <h1>Create an Event</h1>
+              <div class='formCard-type'>
+                <a id="social" class='formCard active' href='#'>
+                  <i class="fa fa-users fa-2x"></i>
+                </a>
+                <a id="sporting" class='formCard' href='#'>
+                  <i class="fa fa-basketball-ball fa-2x"></i>
+                </a>
+                <a id="academic"class='formCard' href='#'>
+                  <i class="fa fa-book fa-2x"></i>
+                </a>
+                <a id="market"class='formCard' href='#'>
+                  <i class="fa fa-shopping-basket fa-2x"></i>
+                </a>
+                <a id="tech"class='formCard' href='#'>
+                  <i class="fa fa-laptop fa-2x"></i>
+                </a>
+                <a id="health"class='formCard' href='#'>
+                  <i class="fa fa-heart fa-2x"></i>
+                </a>
+              </div>
+            </header>
+            <div class='formContent'>
+              <div class='formForm'>
+                <div class='formForm-row'>
+                  <div class='formInput-group'>
+                    <label for=''>Event Name</label>
+                    <input placeholder='' type='text'>
+                  </div>
+                </div>
+                <div class='formForm-row'>
+                  <div class='formInput-group'>
+                    <label for=''>Event Organization</label>
+                    <input maxlength='16' placeholder='' type='text'>
+                  </div>
+                </div>
+                <div class='formForm-row'>
+                  <div class='formInput-group'>
+                    <label for=''>Description</label>
+                    <textarea maxlength='200'></textarea>
+                  </div>
+                </div>
+              </div>
             </div>
-          </div>
+            <footer class='formFooter'>
+              <button class='formButton'>Submit Event</button>
+            </footer>
+          </form>
         </div>
-      </div>
-    </div>
-  </div>
-    <p class="h4 mb-4">Create an Event</p>
+  <!--  </div>
+  </div> -->
+  <!--
+    <h4 class="mb-4">Create an Event</h4>
     <input type="text" id="titleEventInput" class="form-control mb-2" placeholder="Event name">
     <input type="text" id="organizationEventInput" class="form-control mb-2" placeholder="Event organization">
     <div class = "row">
@@ -100,8 +142,7 @@
     </div>
         </div>
     </div>
-</div>
-<!--                          -->
+</div>                      -->
 
 <div class="modal fade right" id="modalEventInfo" tabindex="-1" role="dialog" aria-labelledby="modalEventInfo" aria-hidden="true"  data-backdrop="false">
         <div class="modal-dialog modal-dialog-centered modal-notify modal-info" role="document">
