@@ -42,8 +42,7 @@
     </div>
     <span id="locator" class="button-circle-locate vis"><i class="fa fa-compass fa-lg"></i></span>
   </div>
-
-    <div class='formContainer'>
+    <div id="eventCreateModal" class='formContainer'>
       <form class='formModal'>
         <header class='formHeader'>
           <h1>Create an Event</h1>
@@ -73,31 +72,31 @@
             <div class='formForm-row'>
               <div class='formInput-group'>
                 <label for=''>Event Name</label>
-                <input placeholder='' type='text'>
+                <input id="eventNameInput" maxlength='40' placeholder='' type='text'>
               </div>
             </div>
             <div class='formForm-row'>
               <div class='formInput-group'>
                 <label for=''>Event Organization</label>
-                <input maxlength='16' placeholder='' type='text'>
+                <input id="eventOrganizationInput" maxlength='40' placeholder='' type='text'>
               </div>
             </div>
             <div class='formForm-row'>
               <div class='formInput-group'>
                 <label for=''>Description</label>
-                <textarea maxlength='200'></textarea>
+                <textarea  id="eventDescriptionInput" maxlength='200'></textarea>
               </div>
             </div>
             <div class='formForm-row'>
               <div class='formInput-group'>
                 <label for=''>Duration<span class="formSubtext" id="displayDuration"></span></label>
-                <input id='durationSlider' class="slider"type="range"  value="60" min="30" max="300" step="10">
+                <input id='eventDurationInput' class="slider"type="range"  value="60" min="30" max="300" step="10">
               </div>
             </div>
           </div>
         </div>
         <footer class='formFooter'>
-          <button class='formButton'>Submit Event</button>
+          <button id="eventInputButton" class='formButton'>Submit Event</button>
         </footer>
       </form>
     </div>

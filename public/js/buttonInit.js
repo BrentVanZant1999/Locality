@@ -1,14 +1,79 @@
+var createModal = document.getElementById('eventCreateModal');
+var inModal = false;
+var createMarkerExists = false;
 /*
- * New form input js.
+ * Event type card selection handling
  */
-$('.card').on('click', function(e) {
+$('.formCard').on('click', function(e) {
   e.preventDefault();
-  $('.card').removeClass('active');
+  $('.formCard').removeClass('active');
   $(this).addClass('active');
-  $('.form').stop().slideUp();
-  $('.form').delay(300).slideDown();
 });
 
+/*
+ * Modal Submission Handling
+ */
+$('#eventInputButton').on('click', function(e) {
+  e.preventDefault();
+  return false;
+});
+/*
+ *  Slider management
+ */
+ var durationSlider = document.getElementById("eventDurationInput");
+ var displaySlider = document.getElementById("displayDuration");
+ var minutesInput = durationSlider.value;
+ var hoursDisplay = Math.floor(minutesInput/60);
+ var minutesDisplay = (minutesInput%60);
+ if (hoursDisplay > 0){
+   if (minutesDisplay != 0) {
+     if (hoursDisplay < 2) {
+       displaySlider.innerHTML = "("+ hoursDisplay+" hour and " + minutesDisplay +" minutes."+")";
+     }
+     else {
+       displaySlider.innerHTML = "("+hoursDisplay+" hours and " + minutesDisplay +" minutes."+")";
+     }
+   }
+   else {
+     if (hoursDisplay < 2) {
+       displaySlider.innerHTML = "("+hoursDisplay+" hour."+")";
+     }
+     else {
+       displaySlider.innerHTML = "("+hoursDisplay+" hours."+")";
+     }
+   }
+ }
+ else {
+   displaySlider.innerHTML = "("+minutesDisplay+" minutes."+")";
+ }
+ // Update the current slider value (each time you drag the slider handle)
+ durationSlider.oninput = function() {
+   minutesInput = durationSlider.value;
+   hoursDisplay = Math.floor(minutesInput/60);
+   minutesDisplay = (minutesInput%60);
+   if (hoursDisplay > 0){
+     if (minutesDisplay != 0) {
+       if (hoursDisplay < 2) {
+         displaySlider.innerHTML = "("+ hoursDisplay+" hour and " + minutesDisplay +" minutes."+")";
+       }
+       else {
+         displaySlider.innerHTML = "("+hoursDisplay+" hours and " + minutesDisplay +" minutes."+")";
+       }
+     }
+     else {
+       if (hoursDisplay < 2) {
+         displaySlider.innerHTML = "("+hoursDisplay+" hour."+")";
+       }
+       else {
+         displaySlider.innerHTML = "("+hoursDisplay+" hours."+")";
+       }
+     }
+   }
+   else {
+     displaySlider.innerHTML = "("+minutesDisplay+" minutes."+")";
+   }
+
+ }
 
 /*
  * Give the locator button the property:
@@ -26,12 +91,13 @@ $('#locator').on('click', function(){
  */
 $('#eventCreateButton').on('click', function(){
   if (inModal === false) {
-    if (hasLocation === false) {
+    if (createMarkerExists === false) {
       createNewEventMarker();
       toggleButtons();
     }
     else {
-      $('#eventCreateModal').modal('show');
+      console.log("Fired");
+      createModal.style.display="block";
       var latLng = markerUI.getLatLng();
       tempLng = latLng.lng;
       tempLat = latLng.lat;
