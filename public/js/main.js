@@ -1,4 +1,3 @@
-
 /*
  * Constant Declerations
  */
@@ -140,55 +139,39 @@ function createEventMarker(lat, lng, titleIn, orgIn, typeIn, timeIn, descriptIn)
       //create the marker object and assign reference to it
       newMarker = new eventMarker([lat, lng],{
         clickable: true,
-        title: titleIn,
-        org: orgIn,
-        type: typeIn,
-        description: descriptIn,
-        time: timeIn,
-        icon: socialIcon //ideally logic should be here TODO check to see if this can be done.
-      }).on('click', handleMarkerClick);
-            newMarker.addTo(socialEvents);
+        icon: socialIcon
+      });
+      newMarker.bindPopup("<b>"titleIn"</b>""<br>"+descriptIn);
+      newMarker.addTo(socialEvents);
     }
     break;
     case(2):
     {
       newMarker = new eventMarker([lat, lng],{
         clickable: true,
-        title: titleIn,
-        org: orgIn,
-        type: typeIn,
-        description: descriptIn,
-        time: timeIn,
         icon: sportingIcon
       }).on('click', handleMarkerClick);
-            newMarker.addTo(sportingEvents);
+      newMarker.bindPopup("<b>"titleIn"</b>""<br>"+descriptIn);
+      newMarker.addTo(sportingEvents);
     }
     break;
     case(3):
     {
       newMarker = new eventMarker([lat, lng],{
         clickable: true,
-        title: titleIn,
-        org: orgIn,
-        type: typeIn,
-        description: descriptIn,
-        time: timeIn,
         icon: academicIcon
       }).on('click', handleMarkerClick);
-            newMarker.addTo(academicEvents);
+      newMarker.bindPopup("<b>"titleIn"</b>""<br>"+descriptIn);
+      newMarker.addTo(academicEvents);
     }
     break;
     case(4):
     {
       newMarker = new eventMarker([lat, lng],{
         clickable: true,
-        title: titleIn,
-        org: orgIn,
-        type: typeIn,
-        description: descriptIn,
-        time: timeIn,
         icon: marketIcon
       }).on('click', handleMarkerClick);
+      newMarker.bindPopup("<b>"titleIn"</b>""<br>"+descriptIn);
       newMarker.addTo(marketEvents);
     }
     break;
@@ -196,13 +179,9 @@ function createEventMarker(lat, lng, titleIn, orgIn, typeIn, timeIn, descriptIn)
     {
       newMarker = new eventMarker([lat, lng],{
         clickable: true,
-        title: titleIn,
-        org: orgIn,
-        type: typeIn,
-        description: descriptIn,
-        time: timeIn,
         icon: techIcon
       }).on('click', handleMarkerClick);
+      newMarker.bindPopup("<b>"titleIn"</b>""<br>"+descriptIn);
       newMarker.addTo(techEvents);
     }
     break;
@@ -210,13 +189,9 @@ function createEventMarker(lat, lng, titleIn, orgIn, typeIn, timeIn, descriptIn)
     {
       newMarker = new eventMarker([lat, lng],{
         clickable: true,
-        title: titleIn,
-        org: orgIn,
-        type: typeIn,
-        description: descriptIn,
-        time: timeIn,
         icon: healthIcon
       }).on('click', handleMarkerClick);
+      newMarker.bindPopup("<b>"titleIn"</b>""<br>"+descriptIn);
       newMarker.addTo(healthEvents);
     }
     break;
@@ -241,11 +216,10 @@ function handleMarkerClick(e) {
  * returns true if everything has an input.
  */
 function validateEventInput() {
-  var titleInput = document.getElementById("titleEventInput");
-  var orgInput = document.getElementById("organizationEventInput");
-  var typeInput = document.getElementById("typeEventInput") ;
-  var timeInput = document.getElementById("timeEventInput");
-  var descriptionInput = document.getElementById("descriptionEventInput");
+  var titleInput = document.getElementById("eventNameInput");
+  var orgInput = document.getElementById("eventOrganizationInput");
+  var timeInput = document.getElementById("eventDurationInput");
+  var descriptionInput = document.getElementById("eventDescriptionInput");
 
   if (titleInput.value === ""){
     alert("Event title Needed.");
@@ -253,10 +227,6 @@ function validateEventInput() {
   }
   else if (orgInput.value === ""){
     alert("Event organization needed.");
-    return false;
-  }
-  else if (typeInput.value === ""){
-    alert("Event type needed");
     return false;
   }
   else if (timeInput.value === ""){
@@ -274,11 +244,11 @@ function validateEventInput() {
 function writeUserEvent() {
   var myUserName = firebase.auth().currentUser.displayName;
   var eventsRef = firebase.database().ref('events');
-  var titleInput = document.getElementById("titleEventInput");
-  var orgInput = document.getElementById("organizationEventInput");
-  var typeInput = document.getElementById("typeEventInput") ;
-  var timeInput = document.getElementById("timeEventInput");
-  var descriptionInput = document.getElementById("descriptionEventInput");
+  var titleInput = document.getElementById("eventNameInput");
+  var orgInput = document.getElementById("eventOrganizationInput");
+  var typeInput = document.getElementById("typeEventInput") ; //TODO FIX TYPE OF INPUT
+  var timeInput = document.getElementById("eventDurationInput"); //TODO FIGURE OUT TIME INPUT
+  var descriptionInput = document.getElementById("eventDescriptionInput");
   //one api call
   var eventID = eventsRef.push ({
    title: titleInput.value,
@@ -306,7 +276,23 @@ function writeUserData(userId, email, displayName ) {
     email: email
   });
 }
-
+/*
+ *  return a date object which represents an end time of an event
+ */
+function getEndTime(minuteDuration) {
+    var dateNow = new Date();
+    var utc = dataNow.getTime();
+    var endTime = moment(utc).add(minuteDuration, 'm').toDate();
+    return endTime;
+}
+/*
+ *  return a date object which represents the current time of an event
+ */
+function calcCurrentTime() {
+    var dateNow = new Date();
+    var utc = dateNow.getTime();
+    return utc;
+}
 /*
  * When the page is loaded, call initApp
  */
