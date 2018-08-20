@@ -20,55 +20,6 @@ function createNewEventMarker() {
   });
 }
 
-/*
- * Update the event modal with input information
- * Basically changes html of the modal and certain stylings
- */
-function updateEventModal(title,organization,description,type) {
-  document.getElementById("eventTitlePlace").innerHTML = title;
-  document.getElementById("eventOrganizationPlace").innerHTML = organization;
-  document.getElementById("eventInfoDescription").innerHTML = description;
-  document.getElementById("eventTypePlace").classList.remove('fa-book');
-  document.getElementById("eventTypePlace").classList.remove('fa-volleyball-ball');
-  document.getElementById("eventTypePlace").classList.remove('fa-tag');
-  document.getElementById("eventTypePlace").classList.remove('fa-users');
-  document.getElementById("eventTypePlace").classList.remove('fa-laptop');
-  document.getElementById("eventTypePlace").classList.remove('fa-heart');
-  switch(type){
-    case(1):
-    {
-      document.getElementById("eventTypePlace").classList.add('fa-users');
-    }
-    break;
-    case(2):
-    {
-      document.getElementById("eventTypePlace").classList.add('fa-volleyball-ball');
-    }
-    break;
-    case(3):
-    {
-      document.getElementById("eventTypePlace").classList.add('fa-book');
-    }
-    break;
-    case(4):
-    {
-      document.getElementById("eventTypePlace").classList.add('fa-tag');
-    }
-    break;
-    case(5):
-    {
-      document.getElementById("eventTypePlace").classList.add('fa-laptop');
-    }
-    break;
-    case(6):
-    {
-      document.getElementById("eventTypePlace").classList.add('fa-heart');
-    }
-    break;
-  }
-}
-
-
 
 /*
  * Handles the user state
@@ -141,7 +92,7 @@ function createEventMarker(lat, lng, titleIn, orgIn, typeIn, timeIn, descriptIn)
         clickable: true,
         icon: socialIcon
       });
-      newMarker.bindPopup("<b>"titleIn"</b>""<br>"+descriptIn);
+      newMarker.bindPopup("<b>"+titleIn+"</b><br>"+descriptIn);
       newMarker.addTo(socialEvents);
     }
     break;
@@ -150,8 +101,8 @@ function createEventMarker(lat, lng, titleIn, orgIn, typeIn, timeIn, descriptIn)
       newMarker = new eventMarker([lat, lng],{
         clickable: true,
         icon: sportingIcon
-      }).on('click', handleMarkerClick);
-      newMarker.bindPopup("<b>"titleIn"</b>""<br>"+descriptIn);
+      });
+  newMarker.bindPopup("<b>"+titleIn+"</b><br>"+descriptIn);
       newMarker.addTo(sportingEvents);
     }
     break;
@@ -160,8 +111,8 @@ function createEventMarker(lat, lng, titleIn, orgIn, typeIn, timeIn, descriptIn)
       newMarker = new eventMarker([lat, lng],{
         clickable: true,
         icon: academicIcon
-      }).on('click', handleMarkerClick);
-      newMarker.bindPopup("<b>"titleIn"</b>""<br>"+descriptIn);
+      });
+        newMarker.bindPopup("<b>"+titleIn+"</b><br>"+descriptIn);
       newMarker.addTo(academicEvents);
     }
     break;
@@ -170,8 +121,8 @@ function createEventMarker(lat, lng, titleIn, orgIn, typeIn, timeIn, descriptIn)
       newMarker = new eventMarker([lat, lng],{
         clickable: true,
         icon: marketIcon
-      }).on('click', handleMarkerClick);
-      newMarker.bindPopup("<b>"titleIn"</b>""<br>"+descriptIn);
+      });
+      newMarker.bindPopup("<b>"+titleIn+"</b><br>"+descriptIn);
       newMarker.addTo(marketEvents);
     }
     break;
@@ -180,8 +131,8 @@ function createEventMarker(lat, lng, titleIn, orgIn, typeIn, timeIn, descriptIn)
       newMarker = new eventMarker([lat, lng],{
         clickable: true,
         icon: techIcon
-      }).on('click', handleMarkerClick);
-      newMarker.bindPopup("<b>"titleIn"</b>""<br>"+descriptIn);
+      });
+      newMarker.bindPopup("<b>"+titleIn+"</b><br>"+descriptIn);
       newMarker.addTo(techEvents);
     }
     break;
@@ -190,24 +141,14 @@ function createEventMarker(lat, lng, titleIn, orgIn, typeIn, timeIn, descriptIn)
       newMarker = new eventMarker([lat, lng],{
         clickable: true,
         icon: healthIcon
-      }).on('click', handleMarkerClick);
-      newMarker.bindPopup("<b>"titleIn"</b>""<br>"+descriptIn);
+    });
+      newMarker.bindPopup("<b>"+titleIn+"</b><br>"+descriptIn);
       newMarker.addTo(healthEvents);
     }
     break;
   }
   //adds the marker to the main marker group created at the beggining of this file
 
-}
-
-/*
- * Takes a marker click event ( e == event reference when it happens)
- * and calls update event modal given the particular markers information
- * it then shows the modal with event information
- */
-function handleMarkerClick(e) {
-  updateEventModal(this.options.title,this.options.org,this.options.description,this.options.type);
-  $('#modalEventInfo').modal('show');
 }
 
 /*

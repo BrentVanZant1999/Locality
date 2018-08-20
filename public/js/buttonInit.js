@@ -156,18 +156,21 @@ function cancelButton(){
  * functionality they are supposed to have at any given time.
  */
 function toggleButtons(){
-    if (hasLocation === false){
+    if (createMarkerExists === false){
       document.getElementById("eventCreateButtonIcon").classList.remove('fa-plus');
       document.getElementById("eventCreateButtonIcon").classList.add('fa-check');
       document.getElementById("eventCancelButton").classList.remove('invis');
       document.getElementById("eventCancelButton").classList.add('vis');
-      hasLocation = true;
+      createMarkerExists = true;
     }
     else {
       document.getElementById("eventCreateButtonIcon").classList.remove('fa-check');
       document.getElementById("eventCreateButtonIcon").classList.add('fa-plus');
       document.getElementById("eventCancelButton").classList.remove('vis');
       document.getElementById("eventCancelButton").classList.add('invis');
-      hasLocation = false;
+      createMarkerExists = false;
     }
 }
+/*
+ * handle click out of modal
+ */
