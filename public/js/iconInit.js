@@ -1,30 +1,3 @@
-/*
- * mymap.options holds map settings. Setting's should be set here. Currently
- * only zooms have been set.
- */
-mymap.options.minZoom = 14;
-mymap.options.maxZoom = maxMapZoom;
-
-/*
- * Enables the map to listen for location finding functions
- */
-mymap.on('locationerror', onLocationError);
-mymap.on('locationfound', onLocationfound);
-
-/*
- * A tile layer is the lowest layer on the map. It draws on the streets and
- * objects and such. It gives the background to the map essentially.
- * Mapbox is the current provider.
- */
-L.tileLayer('https://api.mapbox.com/styles/v1/bvanzant/cjitaouuo4toq2so62d2nn724/tiles/256/{z}/{x}/{y}?access_token=pk.eyJ1IjoiYnZhbnphbnQiLCJhIjoiY2ppZTZhdzh2MDZvazN3bXllOTlmYXc4aCJ9.ipjbP-7psE4EN1sVYotlsQ', {
-  attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, <a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
-  maxZoom: maxMapZoom,
-  id: 'mapbox.streets',
-  accessToken: 'pk.eyJ1IjoiYnZhbnphbnQiLCJhIjoiY2ppZTZhdzh2MDZvazN3bXllOTlmYXc4aCJ9.ipjbP-7psE4EN1sVYotlsQ'
-}).addTo(mymap);
-
-
-
 /* creates a class that extends the leaflet Marker base class.
  * defined within this new class is a bunch of fields for information about
  * events that will need to be stored in markers.
@@ -89,4 +62,3 @@ var healthIcon = L.icon({
     iconAnchor:   [0, 0], // point of the icon which will correspond to marker's location
     popupAnchor:  [32, 10] // point from which the popup should open relative to the iconAnchor
 });
-

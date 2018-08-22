@@ -1,8 +1,8 @@
 //constants declerations
 const locateZoom = 17;
 const maxMapZoom = 18;
-var curLat = 32.88025;
-var curLng = -117.23752;
+var curLat = 42.36556;
+var curLng = -71.054;
 /* Creates a map object, sets its viewpoint and zoom.
  * mymap - a reference to the map the application centers on
  */
@@ -70,9 +70,9 @@ function onLocationError(e) {
  * objects and such. It gives the background to the map essentially.
  * Mapbox is the current provider.
  */
-L.tileLayer('https://api.mapbox.com/styles/v1/bvanzant/cjitaouuo4toq2so62d2nn724/tiles/256/{z}/{x}/{y}?access_token=pk.eyJ1IjoiYnZhbnphbnQiLCJhIjoiY2ppZTZhdzh2MDZvazN3bXllOTlmYXc4aCJ9.ipjbP-7psE4EN1sVYotlsQ', {
-  attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, <a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
-  maxZoom: maxMapZoom,
-  id: 'mapbox.streets',
-  accessToken: 'pk.eyJ1IjoiYnZhbnphbnQiLCJhIjoiY2ppZTZhdzh2MDZvazN3bXllOTlmYXc4aCJ9.ipjbP-7psE4EN1sVYotlsQ'
-}).addTo(mymap);
+ L.tileLayer('https://api.mapbox.com/styles/v1/bvanzant/cjl4yucoc61iz2spncbez1txr/tiles/256/{z}/{x}/{y}?access_token=pk.eyJ1IjoiYnZhbmNhciIsImEiOiJjamw1bXJhdzYyb2ZrM3dsbXZiOG95dDBiIn0.M1PGjDxwxEZXEwk0r5qJEA', {
+   attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, <a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
+   zoomControl: true,
+   id: 'mapbox.streets',
+   accessToken: 'pk.eyJ1IjoiYnZhbmNhciIsImEiOiJjamw1bXJhdzYyb2ZrM3dsbXZiOG95dDBiIn0.M1PGjDxwxEZXEwk0r5qJEA'
+ }).addTo(mymap);
