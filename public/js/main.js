@@ -4,7 +4,7 @@
 var eventsLocationRef = firebase.database().ref('eventsLocations');
 var geoFire;
 var searchRadius = 2;
-  moment().format();
+moment().format();
 /*
  * Creates the marker that users use to plan where there event will take place
  */
@@ -66,7 +66,9 @@ function startDatabaseQuery() {
         var lat = location[0];
         var lng =  location[1];
         var description = snapshot.val().description;
-        createEventMarker(lat,lng,title,org,type,endTime,description);
+        if (endTime != null) {
+          createEventMarker(lat,lng,title,org,type,endTime,description);
+        }
       });
   });
   var onReadyRegistration = geoQuery.on("ready", function() {
@@ -84,6 +86,10 @@ function createEventMarker(lat, lng, titleIn, orgIn, typeIn, timeIn, descriptIn)
    *super inefficient but i couldn;t get logic to work within the actual
    *marker creation
    */
+  if (timeIn < calcCurrentTime() ) {
+    console.log("In here");
+    return false;
+  }
   switch(typeIn){
     case(1):
     {
@@ -147,8 +153,7 @@ function createEventMarker(lat, lng, titleIn, orgIn, typeIn, timeIn, descriptIn)
     }
     break;
   }
-  //adds the marker to the main marker group created at the beggining of this file
-
+  return true;
 }
 
 /*
@@ -195,12 +200,15 @@ function writeUserEvent() {
   var durationInput = document.getElementById("eventDurationInput"); //TODO FIGURE OUT TIME INPUT
   var descriptionInput = document.getElementById("descriptionEventInput");
   //one api call
-  var currentTime =
+  console.log(durationInput.value);
+  var endTime = getEndTime(durationInput.value);
+  console.log(endTime);
+  console.log("getTime:"+ endTime.getTime());
   var eventID = eventsRef.push ({
    title: titleInput.value,
    owner: myUserName,
    description: descriptionInput.value,
-   endTime: timeInput,
+   endTime: endTime.getTime(),
    type: parseInt(typeInput.value),
    org: orgInput.value
  }).getKey();
@@ -227,7 +235,7 @@ function writeUserData(userId, email, displayName ) {
  */
 function getEndTime(minuteDuration) {
     var dateNow = new Date();
-    var utc = dataNow.getTime();
+    var utc = dateNow.getTime();
     var endTime = moment(utc).add(minuteDuration, 'm').toDate();
     return endTime;
 }

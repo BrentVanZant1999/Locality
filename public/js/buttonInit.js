@@ -123,10 +123,15 @@ $('#cancelEventCreation').on('click', function(){
  */
 $('#submitEvent').on('click', function(){
   if (validateEventInput()) {
+    console.log("IN HERE LLELELELEL");
     mymap.removeLayer(markerGroupUI);
     writeUserEvent();
     hasLocation=false;
     inModal=false;
+    console.log("Got here");
+  }
+  else {
+    return false;
   }
 });
 
@@ -138,6 +143,9 @@ $('#eventCancelButton').on('click', function(){
   cancelButton();
 });
 
+$('#cancelEventCreation').on('click', function(){
+  cancelButton();
+});
 /*
  * Change the buttons display back to the normal display and remove the ui
  * marker
