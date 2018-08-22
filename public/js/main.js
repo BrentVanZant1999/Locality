@@ -4,7 +4,7 @@
 var eventsLocationRef = firebase.database().ref('eventsLocations');
 var geoFire;
 var searchRadius = 2;
-
+  moment().format();
 /*
  * Creates the marker that users use to plan where there event will take place
  */
@@ -157,11 +157,15 @@ function createEventMarker(lat, lng, titleIn, orgIn, typeIn, timeIn, descriptIn)
  * returns true if everything has an input.
  */
 function validateEventInput() {
-  var titleInput = document.getElementById("eventNameInput");
-  var orgInput = document.getElementById("eventOrganizationInput");
+  var titleInput = document.getElementById("titleEventInput");
+  var orgInput = document.getElementById("organizationEventInput");
   var timeInput = document.getElementById("eventDurationInput");
   var descriptionInput = document.getElementById("eventDescriptionInput");
-
+  var typeInput = document.getElementById("eventDurationInput");
+  if (typeInput === ""){
+    alert("Event type needed");
+    return false;
+  }
   if (titleInput.value === ""){
     alert("Event title Needed.");
     return false;
@@ -185,12 +189,13 @@ function validateEventInput() {
 function writeUserEvent() {
   var myUserName = firebase.auth().currentUser.displayName;
   var eventsRef = firebase.database().ref('events');
-  var titleInput = document.getElementById("eventNameInput");
-  var orgInput = document.getElementById("eventOrganizationInput");
+  var titleInput = document.getElementById("titleEventInput");
+  var orgInput = document.getElementById("organizationEventInput");
   var typeInput = document.getElementById("typeEventInput") ; //TODO FIX TYPE OF INPUT
-  var timeInput = document.getElementById("eventDurationInput"); //TODO FIGURE OUT TIME INPUT
-  var descriptionInput = document.getElementById("eventDescriptionInput");
+  var durationInput = document.getElementById("eventDurationInput"); //TODO FIGURE OUT TIME INPUT
+  var descriptionInput = document.getElementById("descriptionEventInput");
   //one api call
+  var currentTime =
   var eventID = eventsRef.push ({
    title: titleInput.value,
    owner: myUserName,

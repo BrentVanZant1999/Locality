@@ -3,13 +3,13 @@ var inModal = false;
 var createMarkerExists = false;
 /*
  * Event type card selection handling
- */
+
 $('.formCard').on('click', function(e) {
   e.preventDefault();
   $('.formCard').removeClass('active');
   $(this).addClass('active');
 });
-
+ */
 /*
  * Modal Submission Handling
  */
@@ -96,8 +96,7 @@ $('#eventCreateButton').on('click', function(){
       toggleButtons();
     }
     else {
-      console.log("Fired");
-      createModal.style.display="block";
+      $('#eventCreateModal').modal('show');
       var latLng = markerUI.getLatLng();
       tempLng = latLng.lng;
       tempLat = latLng.lat;

@@ -5,20 +5,31 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <meta name="author" content="Laughteres">
+  <script type="text/javascript" src="  https://cdnjs.cloudflare.com/ajax/libs/bootstrap-slider/10.2.0/bootstrap-slider.js"></script>
 	<!-- Font Awesome -->
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" crossorigin="anonymous">
-	<!--Leaflet core CSS -->
+  <!-- Bootstrap core CSS -->
+	<link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet">
+	<!-- Material Design Bootstrap -->
+	<link href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.5.4/css/mdb.min.css" rel="stylesheet">
+  <!--Leaflet core CSS -->
 	<link rel="stylesheet" href="https://unpkg.com/leaflet@1.3.3/dist/leaflet.css"
    integrity="sha512-Rksm5RenBEKSKFjgI3a41vrjkw4EVPlJ3+OiI65vTjIdo9brlAacEuKOiQ5OFh7cOI1bkDwLqdLw3Zg0cRJAAQ=="
    crossorigin=""/>
    <!-- JQuery -->
  	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-	<!-- Leaflet core JavaScript -->
+  <!-- Bootstrap tooltips -->
+	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.13.0/umd/popper.min.js"></script>
+	<!-- Bootstrap core JavaScript -->
+	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0/js/bootstrap.min.js"></script>
+  <!-- MDB core JavaScript -->
+  	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.5.4/js/mdb.min.js"></script>
+  <!-- Leaflet core JavaScript -->
 	 <script src="https://unpkg.com/leaflet@1.3.3/dist/leaflet.js"
    integrity="sha512-tAGcCfR4Sc5ZP5ZoVz0quoZDYX5aCtEm/eu1KhSLj2c9eFrylXZknQYmxUssFaVJKvvc0dJQixhGjG2yXWiV9Q=="
    crossorigin=""></script>
    <!-- Moment Javascript -->
-   <script type="text/javascript" src ="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.22.2/locale/af.js"></script>
+   <script type="text/javascript" src ="https://cdn.jsdelivr.net/npm/moment@2.22.2/moment.min.js"></script>
    <!-- Page css -->
    <link rel="stylesheet" type="text/css" href="css/appPage.css">
 
@@ -45,7 +56,7 @@
     </div>
     <span id="locator" class="button-circle-locate vis"><i class="fa fa-compass fa-lg"></i></span>
   </div>
-  <!--
+<!--
     <div id="eventCreateModal" class='formContainer'>
       <form class='formModal'>
         <header class='formHeader'>
@@ -105,8 +116,11 @@
       </form>
     </div>
   -->
-  <!--
-    <h4 class="mb-4">Create an Event</h4>
+  <div class="modal fade" id="eventCreateModal" tabindex="-1" role="dialog" data-backdrop="static" data-keyboard="false" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+          <form class="text-center border border-light p-5">
+    <p class="h4 mb-4">Create an Event</p>
     <input type="text" id="titleEventInput" class="form-control mb-2" placeholder="Event name">
     <input type="text" id="organizationEventInput" class="form-control mb-2" placeholder="Event organization">
     <div class = "row">
@@ -118,13 +132,13 @@
           <option value="2">Sporting</option>
           <option value="3">Academic</option>
           <option value="4">Market</option>
-		      <option value="5">Tech</option>
+          <option value="5">Tech</option>
           <option value="6">Health</option>
         </select>
       </div>
       <div class = "col">
-        <h6 class="mb-2">Time Ending</h6>
-        <input type="time" id="timeEventInput" class="form-control mb-2">
+        <label for=''>Duration<span class="formSubtext" id="displayDuration"></span></label>
+        <input id='eventDurationInput' class="slider"type="range"  value="60" min="30" max="300" step="10">
       </div>
     </div>
     <div class="form-group">
@@ -139,9 +153,11 @@
         <button id="submitEvent" class="btn btn-info btn-block">Submit</button>
       </div>
     </div>
+</form>
         </div>
     </div>
-</div>                      -->
+</div>
+
 
 </body>
 
