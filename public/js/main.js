@@ -196,14 +196,10 @@ function writeUserEvent() {
   var eventsRef = firebase.database().ref('events');
   var titleInput = document.getElementById("titleEventInput");
   var orgInput = document.getElementById("organizationEventInput");
-  var typeInput = document.getElementById("typeEventInput") ; //TODO FIX TYPE OF INPUT
-  var durationInput = document.getElementById("eventDurationInput"); //TODO FIGURE OUT TIME INPUT
+  var typeInput = document.getElementById("typeEventInput") ;
+  var durationInput = document.getElementById("eventDurationInput");
   var descriptionInput = document.getElementById("descriptionEventInput");
-  //one api call
-  console.log(durationInput.value);
   var endTime = getEndTime(durationInput.value);
-  console.log(endTime);
-  console.log("getTime:"+ endTime.getTime());
   var eventID = eventsRef.push ({
    title: titleInput.value,
    owner: myUserName,
@@ -230,6 +226,15 @@ function writeUserData(userId, email, displayName ) {
     email: email
   });
 }
+/*
+ *  Return the amount of time in mins remaining in an event
+ */
+ function getRemainder(timeOne, timeTwo) {
+   var diffMins = 0;
+
+   return diffMins;
+ }
+
 /*
  *  return a date object which represents an end time of an event
  */
