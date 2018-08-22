@@ -82,13 +82,57 @@ function startDatabaseQuery() {
 function createEventMarker(lat, lng, titleIn, orgIn, typeIn, timeIn, descriptIn){
   //create marker reference
   var newMarker;
+  var timeLeft;
+  var minsLeft;
+  var hoursLeft;
+  var timeNow = calcCurrentTime();
+  var timeString = "Ending at  an Unknown Time";
   /*switch statement to handle what type of event is created.
    *super inefficient but i couldn;t get logic to work within the actual
    *marker creation
    */
-  if (timeIn < calcCurrentTime() ) {
-    console.log("In here");
+  if (timeIn < timeNow ) {
     return false;
+  }
+  else {
+     timeLeft = getRemainder(timeIn, timeNow);
+     minsLeft = timeLeft%60;
+     hoursLeft = Math.floor(timeLeft/60);
+     switch(hoursLeft){
+       case(0):
+       {
+         timeString = "Ending in "+minsLeft +" minutes.";
+         if (minsLeft < 5){
+           timeString = "Ending now.";
+         }
+       }
+       break;
+       case(1):
+       {
+         timeString = "Ending in over an hour";
+       }
+       break;
+       case(2):
+       {
+         timeString = "Ending in over two hours";
+       }
+       break;
+       case(3):
+       {
+         timeString = "Ending in over three hours";
+       }
+       break;
+       case(4):
+       {
+         timeString = "Ending in over four hours";
+       }
+       break;
+       case(5):
+       {
+         timeString = "Ending in over five hours";
+       }
+       break;
+     }
   }
   switch(typeIn){
     case(1):
@@ -98,7 +142,6 @@ function createEventMarker(lat, lng, titleIn, orgIn, typeIn, timeIn, descriptIn)
         clickable: true,
         icon: socialIcon
       });
-      newMarker.bindPopup("<b>"+titleIn+"</b><br>"+descriptIn);
       newMarker.addTo(socialEvents);
     }
     break;
@@ -108,7 +151,6 @@ function createEventMarker(lat, lng, titleIn, orgIn, typeIn, timeIn, descriptIn)
         clickable: true,
         icon: sportingIcon
       });
-  newMarker.bindPopup("<b>"+titleIn+"</b><br>"+descriptIn);
       newMarker.addTo(sportingEvents);
     }
     break;
@@ -118,7 +160,6 @@ function createEventMarker(lat, lng, titleIn, orgIn, typeIn, timeIn, descriptIn)
         clickable: true,
         icon: academicIcon
       });
-        newMarker.bindPopup("<b>"+titleIn+"</b><br>"+descriptIn);
       newMarker.addTo(academicEvents);
     }
     break;
@@ -128,7 +169,6 @@ function createEventMarker(lat, lng, titleIn, orgIn, typeIn, timeIn, descriptIn)
         clickable: true,
         icon: marketIcon
       });
-      newMarker.bindPopup("<b>"+titleIn+"</b><br>"+descriptIn);
       newMarker.addTo(marketEvents);
     }
     break;
@@ -138,7 +178,6 @@ function createEventMarker(lat, lng, titleIn, orgIn, typeIn, timeIn, descriptIn)
         clickable: true,
         icon: techIcon
       });
-      newMarker.bindPopup("<b>"+titleIn+"</b><br>"+descriptIn);
       newMarker.addTo(techEvents);
     }
     break;
@@ -147,12 +186,16 @@ function createEventMarker(lat, lng, titleIn, orgIn, typeIn, timeIn, descriptIn)
       newMarker = new eventMarker([lat, lng],{
         clickable: true,
         icon: healthIcon
-    });
-      newMarker.bindPopup("<b>"+titleIn+"</b><br>"+descriptIn);
+      });
       newMarker.addTo(healthEvents);
     }
     break;
   }
+  newMarker.bindPopup("<div class='text-center'><b class='text-primary'>"
+    +titleIn+"</b>"+"<br><span class='small stylish-color-text'>"
+    +orgIn+"</span></div><em class='small red-text'>"
+    +timeString+"</em><br><span class='small stylish-color-text'>"
+  +descriptIn+"</span>");
   return true;
 }
 
@@ -229,9 +272,10 @@ function writeUserData(userId, email, displayName ) {
 /*
  *  Return the amount of time in mins remaining in an event
  */
- function getRemainder(timeOne, timeTwo) {
+ function getRemainder(timeEnd, timeNow) {
    var diffMins = 0;
-
+   var hourDiff = timeEnd - timeNow;
+   diffMins = Math.floor( hourDiff / 60 / 1000);  //in ms
    return diffMins;
  }
 
