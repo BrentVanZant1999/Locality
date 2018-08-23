@@ -56,66 +56,6 @@
     </div>
     <span id="locator" class="button-circle-locate vis"><i class="fa fa-compass fa-lg"></i></span>
   </div>
-<!--
-    <div id="eventCreateModal" class='formContainer'>
-      <form class='formModal'>
-        <header class='formHeader'>
-          <h1>Create an Event</h1>
-          <div class='formCard-type'>
-            <a id="social" class='formCard active' href='#'>
-              <i class="fa fa-users fa-2x"></i>
-            </a>
-            <a id="sporting" class='formCard' href='#'>
-              <i class="fa fa-basketball-ball fa-2x"></i>
-            </a>
-            <a id="academic"class='formCard' href='#'>
-              <i class="fa fa-book fa-2x"></i>
-            </a>
-            <a id="market"class='formCard' href='#'>
-              <i class="fa fa-shopping-basket fa-2x"></i>
-            </a>
-            <a id="tech"class='formCard' href='#'>
-              <i class="fa fa-laptop fa-2x"></i>
-            </a>
-            <a id="health"class='formCard' href='#'>
-              <i class="fa fa-heart fa-2x"></i>
-            </a>
-          </div>
-        </header>
-        <div class='formContent'>
-          <div class='formForm'>
-            <div class='formForm-row'>
-              <div class='formInput-group'>
-                <label for=''>Event Name</label>
-                <input id="eventNameInput" maxlength='40' placeholder='' type='text'>
-              </div>
-            </div>
-            <div class='formForm-row'>
-              <div class='formInput-group'>
-                <label for=''>Event Organization</label>
-                <input id="eventOrganizationInput" maxlength='40' placeholder='' type='text'>
-              </div>
-            </div>
-            <div class='formForm-row'>
-              <div class='formInput-group'>
-                <label for=''>Description</label>
-                <textarea  id="eventDescriptionInput" maxlength='200'></textarea>
-              </div>
-            </div>
-            <div class='formForm-row'>
-              <div class='formInput-group'>
-                <label for=''>Duration<span class="formSubtext" id="displayDuration"></span></label>
-                <input id='eventDurationInput' class="slider"type="range"  value="60" min="30" max="300" step="10">
-              </div>
-            </div>
-          </div>
-        </div>
-        <footer class='formFooter'>
-          <button id="eventInputButton" class='formButton'>Submit Event</button>
-        </footer>
-      </form>
-    </div>
-  -->
   <div class="modal fade" id="eventCreateModal" tabindex="-1" role="dialog" data-backdrop="static" data-keyboard="false" aria-labelledby="myModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content">
@@ -158,6 +98,29 @@
     </div>
 </div>
 
+<!-- Frame Modal Bottom -->
+<div class="modal fade bottom" id="frameModalBottom" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+
+    <!-- Add class .modal-frame and then add class .modal-bottom (or other classes from list above) to set a position to the modal -->
+    <div class="modal-dialog modal-frame modal-bottom" role="document">
+
+
+      <div class="modal-content">
+        <div class="modal-body">
+          <div class="row d-flex justify-content-center align-items-center">
+
+            <p class="pt-3 pr-2">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Impedit nisi quo provident fugiat reprehenderit nostrum
+              quos..
+            </p>
+
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            <button type="button" class="btn btn-primary">Save changes</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Frame Modal Bottom -->
 
 </body>
 

@@ -22,43 +22,43 @@ eventMarker = L.Marker.extend({
 var creatingIcon = L.icon({
     iconUrl: 'css/markerCreating.png', // this icon is used for the user interface when creating events
     iconSize:     [64, 64], // size of the icon
-    iconAnchor:   [0, 0], // point of the icon which will correspond to marker's location
-    popupAnchor:  [32, 10] // point from which the popup should open relative to the iconAnchor
+    iconAnchor:   [32, 32], // point of the icon which will correspond to marker's location
+    popupAnchor:  [0, 0] // point from which the popup should open relative to the iconAnchor
 });
 var academicIcon = L.icon({
     iconUrl: 'css/markerAcademic.png',
     iconSize:     [64, 64], // size of the icon
-    iconAnchor:   [0, 0], // point of the icon which will correspond to marker's location
-    popupAnchor:  [32, 10] // point from which the popup should open relative to the iconAnchor
+    iconAnchor:   [32, 32], // point of the icon which will correspond to marker's location
+    popupAnchor:  [0, 0] // point from which the popup should open relative to the iconAnchor
 });
 var marketIcon = L.icon({
     iconUrl: 'css/markerMarket.png',
     iconSize:     [64, 64], // size of the icon
-    iconAnchor:   [0, 0], // point of the icon which will correspond to marker's location
-    popupAnchor:  [32, 10] // point from which the popup should open relative to the iconAnchor
+    iconAnchor:   [32,32], // point of the icon which will correspond to marker's location
+    popupAnchor:  [0, 0] // point from which the popup should open relative to the iconAnchor
 });
 var socialIcon = L.icon({
     iconUrl: 'css/markerSocial.png',
     iconSize:     [64, 64], // size of the icon
-    iconAnchor:   [0, 0], // point of the icon which will correspond to marker's location
-    popupAnchor:  [32, 10] // point from which the popup should open relative to the iconAnchor
+    iconAnchor:   [32, 32], // point of the icon which will correspond to marker's location
+    popupAnchor:  [0, 0] // point from which the popup should open relative to the iconAnchor
 });
 var sportingIcon = L.icon({
     iconUrl: 'css/markerSporting.png',
     iconSize:     [64, 64], // size of the icon
-    iconAnchor:   [0, 0], // point of the icon which will correspond to marker's location
-    popupAnchor:  [32, 10] // point from which the popup should open relative to the iconAnchor
+    iconAnchor:   [32, 32], // point of the icon which will correspond to marker's location
+    popupAnchor:  [0, 0] // point from which the popup should open relative to the iconAnchor
 });
 var techIcon = L.icon({
     iconUrl: 'css/markerTech.png',
     iconSize:     [64, 64], // size of the icon
-    iconAnchor:   [0, 0], // point of the icon which will correspond to marker's location
-    popupAnchor:  [32, 10] // point from which the popup should open relative to the iconAnchor
+    iconAnchor:   [32, 32], // point of the icon which will correspond to marker's location
+    popupAnchor:  [0, 0] // point from which the popup should open relative to the iconAnchor
 });
 
 var healthIcon = L.icon({
     iconUrl: 'css/markerHealth.png',
     iconSize:     [64, 64], // size of the icon
-    iconAnchor:   [0, 0], // point of the icon which will correspond to marker's location
-    popupAnchor:  [32, 10] // point from which the popup should open relative to the iconAnchor
+    iconAnchor:   [32, 32], // point of the icon which will correspond to marker's location
+    popupAnchor:  [0, 0] // point from which the popup should open relative to the iconAnchor
 });
