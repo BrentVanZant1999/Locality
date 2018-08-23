@@ -95,12 +95,8 @@ html, body, #container {
   background: #24305E;
   cursor: pointer;
 }
-lesshat-selector {
--lh-property: 0; }
-@-webkit-keyframes active{ 0%{ bottom: -20px; opacity: 0; } 100%{ bottom: -10px; opacity: 1 }}
-@-moz-keyframes active{ 0%{ bottom: -20px; opacity: 0; } 100%{ bottom: -10px; opacity: 1 }}
-@-o-keyframes active{ 0%{ bottom: -20px; opacity: 0; } 100%{ bottom: -10px; opacity: 1 }}
-@keyframes active{ 0%{ bottom: -20px; opacity: 0; } 100%{ bottom: -10px; opacity: 1 }}
-[not-existing] {
-zoom: 1;
+.centeredText {
+  display:block;
+  text-align:center;
+}
 }

@@ -143,7 +143,7 @@ function createEventMarker(lat, lng, titleIn, orgIn, typeIn, timeIn, descriptIn)
         title: titleIn,
         org: orgIn,
         duration: timeString,
-        descriptin: descriptIn,
+        description: descriptIn,
         icon: socialIcon
       });
       newMarker.addTo(socialEvents);
@@ -156,7 +156,7 @@ function createEventMarker(lat, lng, titleIn, orgIn, typeIn, timeIn, descriptIn)
         title: titleIn,
         org: orgIn,
         duration: timeString,
-        descriptin: descriptIn,
+        description: descriptIn,
         icon: sportingIcon
       });
       newMarker.addTo(sportingEvents);
@@ -169,7 +169,7 @@ function createEventMarker(lat, lng, titleIn, orgIn, typeIn, timeIn, descriptIn)
         title: titleIn,
         org: orgIn,
         duration: timeString,
-        descriptin: descriptIn,
+        description: descriptIn,
         icon: academicIcon
       });
       newMarker.addTo(academicEvents);
@@ -182,7 +182,7 @@ function createEventMarker(lat, lng, titleIn, orgIn, typeIn, timeIn, descriptIn)
         title: titleIn,
         org: orgIn,
         duration: timeString,
-        descriptin: descriptIn,
+        description: descriptIn,
         icon: marketIcon
       });
       newMarker.addTo(marketEvents);
@@ -195,7 +195,7 @@ function createEventMarker(lat, lng, titleIn, orgIn, typeIn, timeIn, descriptIn)
         title: titleIn,
         org: orgIn,
         duration: timeString,
-        descriptin: descriptIn,
+        description: descriptIn,
         icon: techIcon
       });
       newMarker.addTo(techEvents);
@@ -208,7 +208,7 @@ function createEventMarker(lat, lng, titleIn, orgIn, typeIn, timeIn, descriptIn)
         title: titleIn,
         org: orgIn,
         duration: timeString,
-        descriptin: descriptIn,
+        description: descriptIn,
         icon: healthIcon
       });
       newMarker.addTo(healthEvents);
@@ -309,7 +309,7 @@ function updateEventModal(title,organization,description,duration) {
   document.getElementById("eventTitle").innerHTML = title;
   document.getElementById("eventOrganization").innerHTML = organization;
   document.getElementById("eventDuration").innerHTML = duration;
-  document.getElementById("eventDescription").innerHTML = description;
+ document.getElementById("eventDescription").innerHTML = description;
 }
 
 /*
