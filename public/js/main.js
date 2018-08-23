@@ -140,6 +140,10 @@ function createEventMarker(lat, lng, titleIn, orgIn, typeIn, timeIn, descriptIn)
       //create the marker object and assign reference to it
       newMarker = new eventMarker([lat, lng],{
         clickable: true,
+        title: titleIn,
+        org: orgIn,
+        duration: timeString,
+        descriptin: descriptIn,
         icon: socialIcon
       });
       newMarker.addTo(socialEvents);
@@ -149,6 +153,10 @@ function createEventMarker(lat, lng, titleIn, orgIn, typeIn, timeIn, descriptIn)
     {
       newMarker = new eventMarker([lat, lng],{
         clickable: true,
+        title: titleIn,
+        org: orgIn,
+        duration: timeString,
+        descriptin: descriptIn,
         icon: sportingIcon
       });
       newMarker.addTo(sportingEvents);
@@ -158,6 +166,10 @@ function createEventMarker(lat, lng, titleIn, orgIn, typeIn, timeIn, descriptIn)
     {
       newMarker = new eventMarker([lat, lng],{
         clickable: true,
+        title: titleIn,
+        org: orgIn,
+        duration: timeString,
+        descriptin: descriptIn,
         icon: academicIcon
       });
       newMarker.addTo(academicEvents);
@@ -167,6 +179,10 @@ function createEventMarker(lat, lng, titleIn, orgIn, typeIn, timeIn, descriptIn)
     {
       newMarker = new eventMarker([lat, lng],{
         clickable: true,
+        title: titleIn,
+        org: orgIn,
+        duration: timeString,
+        descriptin: descriptIn,
         icon: marketIcon
       });
       newMarker.addTo(marketEvents);
@@ -176,6 +192,10 @@ function createEventMarker(lat, lng, titleIn, orgIn, typeIn, timeIn, descriptIn)
     {
       newMarker = new eventMarker([lat, lng],{
         clickable: true,
+        title: titleIn,
+        org: orgIn,
+        duration: timeString,
+        descriptin: descriptIn,
         icon: techIcon
       });
       newMarker.addTo(techEvents);
@@ -185,18 +205,29 @@ function createEventMarker(lat, lng, titleIn, orgIn, typeIn, timeIn, descriptIn)
     {
       newMarker = new eventMarker([lat, lng],{
         clickable: true,
+        title: titleIn,
+        org: orgIn,
+        duration: timeString,
+        descriptin: descriptIn,
         icon: healthIcon
       });
       newMarker.addTo(healthEvents);
     }
     break;
   }
-  newMarker.bindPopup("<div class='text-center'><b class='text-primary'>"
-    +titleIn+"</b>"+"<br><span class='small stylish-color-text'>"
-    +orgIn+"</span></div><em class='small red-text'>"
-    +timeString+"</em><br><span class='small stylish-color-text'>"
-  +descriptIn+"</span>");
+  newMarker.on('click', handleMarkerClick);
   return true;
+
+}
+
+/*
+ * Takes a marker click event ( e == event reference when it happens)
+ * and calls update event modal given the particular markers information
+ * it then shows the modal with event information
+ */
+function handleMarkerClick(e) {
+  updateEventModal(this.options.title,this.options.org,this.options.description,this.options.duration);
+  $('#bottomPopup').modal('show');
 }
 
 /*
@@ -269,6 +300,18 @@ function writeUserData(userId, email, displayName ) {
     email: email
   });
 }
+
+/*
+ * Update the event modal with input information
+ * Basically changes html of the modal and certain stylings
+ */
+function updateEventModal(title,organization,description,duration) {
+  document.getElementById("eventTitle").innerHTML = title;
+  document.getElementById("eventOrganization").innerHTML = organization;
+  document.getElementById("eventDuration").innerHTML = duration;
+  document.getElementById("eventDescription").innerHTML = description;
+}
+
 /*
  *  Return the amount of time in mins remaining in an event
  */

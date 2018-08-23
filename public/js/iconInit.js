@@ -9,7 +9,7 @@ eventMarker = L.Marker.extend({
       org: '',
       type: '',
       description:'',
-      time:''
+      duration:''
     }
 });
 
