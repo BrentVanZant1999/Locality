@@ -221,6 +221,13 @@ function createEventMarker(lat, lng, titleIn, orgIn, typeIn, timeIn, descriptIn)
 }
 
 /*
+ *  Returns a string with first letter capitalized
+ */
+ function handleCasing(stringInput) {
+   var newString = stringInput.charAt(0).toUpperCase() + stringInput.substr(1);
+   return newString;
+ }
+/*
  * Takes a marker click event ( e == event reference when it happens)
  * and calls update event modal given the particular markers information
  * it then shows the modal with event information
@@ -241,7 +248,7 @@ function validateEventInput() {
   var timeInput = document.getElementById("eventDurationInput");
   var descriptionInput = document.getElementById("eventDescriptionInput");
   var typeInput = document.getElementById("eventDurationInput");
-  if (typeInput === ""){
+  if (typeInput.value === ""){
     alert("Event type needed");
     return false;
   }
@@ -257,6 +264,8 @@ function validateEventInput() {
     alert("End time needed");
     return false;
   }
+  titleInput.value = handleCasing(titleInput.value);
+  orgInput.value = handleCasing(orgInput.value);
   return true;
 }
 

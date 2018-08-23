@@ -57,10 +57,10 @@
     <span id="locator" class="button-circle-locate vis"><i class="fa fa-compass fa-lg"></i></span>
   </div>
   <div class="modal fade" id="eventCreateModal" tabindex="-1" role="dialog" data-backdrop="static" data-keyboard="false" aria-labelledby="myModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-dialog modal-dialog-centered modal-sm" role="document">
         <div class="modal-content">
           <form class="text-center border border-light p-3">
-    <p class="h4 mb-4">Create an Event</p>
+    <h4 class="mb-w2">Create an Event</h4>
     <input type="text" id="titleEventInput" class="form-control mb-2" placeholder="Event name">
     <input type="text" id="organizationEventInput" class="form-control mb-2" placeholder="Event organization">
     <div class = "row">
@@ -99,21 +99,17 @@
 </div>
 
 <!-- Frame Modal Bottom -->
-<div class="modal fade bottom" id="bottomPopup" tabindex=1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-
-    <!-- Add class .modal-frame and then add class .modal-bottom (or other classes from list above) to set a position to the modal -->
-    <div class="modal-dialog modal-frame modal-bottom" role="document">
-
-
+<div class="modal fade bottom" id="bottomPopup" tabindex="1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-side modal-bottom-left modal-sm" role="document">
       <div class="modal-content">
-        <div class="modal-body">
+        <div class="modal-body p-3">
           <div class="row d-flex justify-content-center align-items-center">
-            <p  class="pt-3 pr-2"><span id="eventTitle" class="primary-text centeredText h3"></span><span id="eventOrganization" class="h6 default-text centeredText"></span>
-              <span id="eventDuration" class="danger-text"></span><br><span class="text-monospace" id="eventDescription"><span>
+            <p  class="pt-3 pr-2"><span id="eventTitle" class="light-blue-text centeredText h3"></span><span class="h6 centeredText">Hosted By: <span class="h6 teal-text" id="eventOrganization"></span></span>
+              <span id="eventDuration" class="red-text"></span><br><span class="text-monospace" id="eventDescription"><span>
             </p>
           </div>
           <div class="row d-flex justify-content-center align-items-center">
-            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            <button type="button" class="btn btn-info" data-dismiss="modal">Close</button>
           </div>
         </div>
       </div>
