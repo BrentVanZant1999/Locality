@@ -1,8 +1,8 @@
 //constants declerations
 const locateZoom = 17;
 const maxMapZoom = 19;
-var curLat = 42.36556;
-var curLng = -71.054;
+var curLat = 32.88009;
+var curLng = -117.23762;
 /* Creates a map object, sets its viewpoint and zoom.
  * mymap - a reference to the map the application centers on
  */
