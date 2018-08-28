@@ -1,6 +1,6 @@
 //constants declerations
 const locateZoom = 17;
-const maxMapZoom = 19;
+const maxMapZoom = 18;
 var curLat = 32.88009;
 var curLng = -117.23762;
 /* Creates a map object, sets its viewpoint and zoom.
