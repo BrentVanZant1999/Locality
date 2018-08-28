@@ -1,10 +1,14 @@
-// Initialize Firebase
-var config = {
-  apiKey: "AIzaSyCwq0r3_5ZvGY16N05s4P9Wp1eaMkFvZ6Q",
-  authDomain: "fir-uiauthlearning.firebaseapp.com",
-  databaseURL: "https://fir-uiauthlearning.firebaseio.com",
-  projectId: "fir-uiauthlearning",
-  storageBucket: "fir-uiauthlearning.appspot.com",
-  messagingSenderId: "290389399121"
-};
-firebase.initializeApp(config);
+
+<script src="https://www.gstatic.com/firebasejs/5.4.1/firebase.js"></script>
+<script>
+  // Initialize Firebase
+  var config = {
+    apiKey: "AIzaSyDncZkAYyRGzSrmpB8NuwBeoBm9T76LGs4",
+    authDomain: "localiti-ffe6b.firebaseapp.com",
+    databaseURL: "https://localiti-ffe6b.firebaseio.com",
+    projectId: "localiti-ffe6b",
+    storageBucket: "localiti-ffe6b.appspot.com",
+    messagingSenderId: "37321935236"
+  };
+  firebase.initializeApp(config);
+</script>
