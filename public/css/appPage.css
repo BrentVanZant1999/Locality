@@ -40,6 +40,13 @@ html, body, #container {
 .vis{
   display : block;
 }
+.fade{
+  color:#1A1A1D;
+}
+.focus{
+  background-color:#1A1A1D;
+  color:#EDF5E1;
+}
 .button-circle {
   position:relative;
   z-index: 1000;
@@ -52,18 +59,50 @@ html, body, #container {
   background-color: #EDF5E1;
   color: #1A1A1D;
 }
+.button-circle:hover {
+  width: 72px;
+  height: 72px;
+  cursor: pointer;
+}
+ .unselected {color:#1A1A1D;}
+ .selected {color:white;}
 .button-option {
   position:relative;
   z-index: 1000;
   width: 40px;
   height: 40px;
   font-size: 18px;
-  margin: 10px;
+  margin: 8px;
   border-radius: 50%;
   text-align:center;
   line-height:220%;
-  background-color: #EDF5E1;
+  background-color: white;
   color: #1A1A1D;
+  border: 2px solid #1A1A1D;
+}
+.button-option:hover {
+  width: 41px;
+  height: 41px;
+  cursor: pointer;
+}
+.button-selected-option {
+  position:relative;
+  z-index: 1000;
+  width: 40px;
+  height: 40px;
+  font-size: 18px;
+  margin: 8px;
+  border-radius: 50%;
+  text-align:center;
+  line-height:220%;
+  background-color: #1A1A1D;
+  color: white;
+  border: 2px solid white;
+}
+.button-selected-option:hover {
+  width: 41px;
+  height: 41px;
+  cursor: pointer;
 }
 .button-circle-locate {
   position:absolute;
@@ -78,6 +117,11 @@ html, body, #container {
   text-align:center;
   background-color: #EDF5E1;
   color: #1A1A1D;
+}
+.button-circle-locate:hover {
+  width: 30px;
+  height: 30px;
+  cursor: pointer;
 }
 .btn-left{
   float:left;

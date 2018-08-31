@@ -8,6 +8,12 @@ var searchRadius = baseSearchRadius;
 var filterCode = 111111;
 var radiusGroup = L.featureGroup();
 var circle;
+var academicSelected = true;
+var socialSelected = true;
+var sportingSelected = true;
+var marketSelected = true;
+var techSelected = true;
+var healthSelected = true;
 moment().format();
 /*
  * Creates the marker that users use to plan where there event will take place
@@ -240,14 +246,69 @@ function handleMarkerClick(e) {
 }
 
 /*
- * Takes a searcher click event ( e == event reference when it happens)
- * and calls update search modal given the particular markers information
- * it then shows the modal with event information
+ * Takes a searcher click event
+ * and calls update search modal given the current information
  */
 function handleSearchClick() {
   //  updateSearchModal(searchRadius, filterCode);
-  toggleSearchGraphic();
-  //$('#searchModal').modal('show');
+  // toggleSearchGraphic();
+  $('#searchModal').modal('show');
+}
+
+function handleFilterClick(inputClick) {
+  //  updateSearchModal(searchRadius, filterCode);
+  // toggleSearchGraphic();
+  var selectedButton;
+  var selectedIcon;
+  var isSelected;
+  if (inputClick == 1) {
+    selectedButton = document.getElementById("socialFade");
+    selectedIcon = document.getElementById("socialIcon");
+    isSelected = socialSelected;
+    socialSelected = !socialSelected;
+  }
+  else if (inputClick == 2) {
+    selectedButton = document.getElementById("sportingFade");
+    selectedIcon = document.getElementById("sportingIcon");
+    isSelected = sportingSelected;
+    sportingSelected = !sportingSelected;
+  }
+  else if (inputClick == 3) {
+    selectedButton = document.getElementById("academicFade");
+    selectedIcon = document.getElementById("academicIcon");
+    isSelected = academicSelected;
+    academicSelected = !academicSelected;
+  }
+  else if (inputClick == 4) {
+    selectedButton = document.getElementById("marketFade");
+    selectedIcon = document.getElementById("marketIcon");
+    isSelected = marketSelected;
+    marketSelected = !marketSelected;
+  }
+  else if (inputClick == 5) {
+    selectedButton = document.getElementById("techFade");
+    selectedIcon = document.getElementById("techIcon");
+    isSelected = techSelected;
+    techSelected = !techSelected;
+  }
+  else if (inputClick == 6) {
+    selectedButton = document.getElementById("healthFade");
+    selectedIcon = document.getElementById("healthIcon");
+    isSelected = healthSelected;
+    healthSelected = !healthSelected;
+  }
+  if (isSelected == true) {
+    selectedButton.classList.remove('button-selected-option');
+    selectedButton.classList.add('button-option');
+    selectedIcon.classList.remove('selected');
+    selectedIcon.classList.add('unselected');
+  }
+  else {
+    selectedButton.classList.remove('button-option');
+    selectedButton.classList.add('button-selected-option');
+    selectedIcon.classList.remove('unselected');
+    selectedIcon.classList.add('selected');
+  }
 }
 
 function toggleSearchGraphic() {

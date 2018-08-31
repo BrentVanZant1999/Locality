@@ -25,6 +25,24 @@ $('#closeSearch').on('click', function(e) {
   console.log("In here");
 });
 
+$('#socialFade').on('click', function(e) {
+  handleFilterClick(1);
+});
+$('#sportingFade').on('click', function(e) {
+  handleFilterClick(2);
+});
+$('#academicFade').on('click', function(e) {
+  handleFilterClick(3);
+});
+$('#marketFade').on('click', function(e) {
+  handleFilterClick(4);
+});
+$('#techFade').on('click', function(e) {
+  handleFilterClick(5);
+});
+$('#healthFade').on('click', function(e) {
+  handleFilterClick(6);
+});
 
 
 /*
