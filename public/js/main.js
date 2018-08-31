@@ -251,19 +251,18 @@ function handleSearchClick() {
 }
 
 function toggleSearchGraphic() {
-  if (circle == null) {
-    circle = L.circle([curLat, curLng], {
-        color: 'white',
-        fillColor: 'white',
-        fillOpacity: 0.5,
-        radius: baseSearchRadius*1000
-    }).addTo(radiusGroup);
-    mymap.addLayer(radiusGroup);
-  }
-  else {
-    mymap.removeLayer(radiusGroup);
-    circle = null;
-  }
+  if (circle != undefined) {
+     mymap.removeLayer(circle);
+     circle = undefined;
+   }
+   else {
+     circle = L.circle([curLat, curLng], {
+         color: 'white',
+         fillColor: 'white',
+         fillOpacity: 0.2,
+         radius: baseSearchRadius*1000
+     }).addTo(mymap);
+   }
 }
 
 
