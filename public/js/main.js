@@ -3,9 +3,11 @@
  */
 var eventsLocationRef = firebase.database().ref('eventsLocations');
 var geoFire;
-var baseSearchRadius = 2;
+var baseSearchRadius = 1; //in kilometers
 var searchRadius = baseSearchRadius;
 var filterCode = 111111;
+var radiusGroup = L.featureGroup();
+var circle;
 moment().format();
 /*
  * Creates the marker that users use to plan where there event will take place
@@ -48,12 +50,8 @@ initApp = function() {
 
 /*
  * Queries firebase for event info
- * Currently it loads all events into this (clientside application)
- * This will scale horribly if there are a ton of events and thus needs to be
- * fixed. TODO figure out a way to load events in chunks based off location
  */
 function startDatabaseQuery() {
-
   var geoQuery = geoFire.query({
     center: [curLat, curLng],
     radius: searchRadius
@@ -242,14 +240,32 @@ function handleMarkerClick(e) {
 }
 
 /*
- * Takes a marker click event ( e == event reference when it happens)
- * and calls update event modal given the particular markers information
+ * Takes a searcher click event ( e == event reference when it happens)
+ * and calls update search modal given the particular markers information
  * it then shows the modal with event information
  */
 function handleSearchClick() {
-//  updateSearchModal(searchRadius, filterCode);
-  $('#searchModal').modal('show');
+  //  updateSearchModal(searchRadius, filterCode);
+  toggleSearchGraphic();
+  //$('#searchModal').modal('show');
 }
+
+function toggleSearchGraphic() {
+  if (circle == null) {
+    circle = L.circle([curLat, curLng], {
+        color: 'white',
+        fillColor: 'white',
+        fillOpacity: 0.5,
+        radius: baseSearchRadius*1000
+    }).addTo(radiusGroup);
+    mymap.addLayer(radiusGroup);
+  }
+  else {
+    mymap.removeLayer(radiusGroup);
+    circle = null;
+  }
+}
+
 
 
 /*

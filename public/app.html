@@ -124,35 +124,39 @@
     </div>
   </div>
 -->
-  <div class="modal fade left show modal-scrolling" id="bottomPopup" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-      <div class="modal-dialog modal-side modal-bottom-left modal-notify modal-warning" role="document">
-        <div class="modal-content">
-          <div class="modal-header" style="background-color:#1A1A1D;">
-            <p class="heading">Event Information</p>
-            <button id ="closeEvent" type="button" class="close" data-dismiss="modal" aria-label="Close">
-              <span aria-hidden="true" class="white-text">×</span>
-            </button>
-          </div>
-          <div class="modal-body">
-            <div class="row">
-              <div class="col-3 text-center">
-                <p class="title mb-0"><span id="eventTitle" class="light-blue-text centeredText h3"></span></p>
-                <p class="text-muted " style="font-size: 13px"><span class="h6 teal-text" id="eventOrganization"></span></p>
-              </div>
-              <div class="col-9">
-                <p><span id="eventDuration" class="red-text"></span></p>
-                <p class="card-text">
-                  <strong><span class="text-monospace" id="eventDescription"><span></strong>
-                </p>
-              </div>
+<div class="modal fade left show modal-scrolling" id="bottomPopup" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog modal-side modal-bottom-left modal-notify modal-warning" role="document">
+      <div class="modal-content">
+        <div class="modal-header" style="background-color:#1A1A1D;">
+          <p class="heading">Event Information</p>
+          <button id ="closeEvent" type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true" class="white-text">×</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <div class="row">
+            <div class="col-3 text-center">
+              <i id="eventInfoIcon" class="fa fa-users fa-3x" style="color:#1A1A1D;"></i>
+              <p class="title mb-0">Social</p>
+              <p class="text-muted " style="font-size: 13px">Event</p>
+            </div>
+            <div class="col-9">
+              <p class="h6 mb-0"><span id="eventTitle">Event Title</span> <span class="text-muted" style="font-size: 13px">held by <span id="eventOrganization"></span></span> </p>
+              <p class="text-muted mb-2">
+                <span id="eventDuration">Can't Load Data</span>
+              </p>
+              <p class="card-text">
+                <span class="h6">"</span><strong id="eventDescription">Can't Load Data</strong><span class="h6">"</span>
+              </p>
             </div>
           </div>
-          <div class="modal-footer justify-content-center">
-            <a type="button" class="btn  btn-outline-elegant waves-effect" data-dismiss="modal">Update Search</a>
-          </div>
+        </div>
+        <div class="modal-footer justify-content-center">
+          <a type="button" class="btn  btn-outline-elegant waves-effect" data-dismiss="modal">Update Search</a>
         </div>
       </div>
     </div>
+  </div>
   <!-- Frame Modal Bottom -->
 
   <!-- Frame Modal Bottom -->
@@ -167,15 +171,13 @@
           </div>
           <div class="modal-body">
             <div class="row">
-              <div class="col-3 text-center">
-                <p class="title mb-0">Social</p>
-                <p class="text-muted " style="font-size: 13px">Event</p>
+              <div class="col">
+                <input type="number" id="titleEventInput" class="form-control mb-2" placeholder="Search Radius">
               </div>
-              <div class="col-9">
-                <p>Event Title </p>
-                <p class="card-text">
-                  <strong>Event Organization</strong>
-                </p>
+            </div>
+            <div class="row">
+              <div class="col">
+                Filters Here
               </div>
             </div>
           </div>
