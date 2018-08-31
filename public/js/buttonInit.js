@@ -17,6 +17,10 @@ $('#eventInputButton').on('click', function(e) {
   e.preventDefault();
   return false;
 });
+$('#eventSearchButton').on('click', function(e) {
+  handleSearchClick();
+});
+
 /*
  *  Slider management
  */
@@ -164,6 +168,8 @@ function toggleButtons(){
     if (createMarkerExists === false){
       document.getElementById("eventCreateButtonIcon").classList.remove('fa-plus');
       document.getElementById("eventCreateButtonIcon").classList.add('fa-check');
+      document.getElementById("eventSearchButton").classList.add('invis');
+      document.getElementById("eventSearchButton").classList.remove('vis');
       document.getElementById("eventCancelButton").classList.remove('invis');
       document.getElementById("eventCancelButton").classList.add('vis');
       createMarkerExists = true;
@@ -171,6 +177,8 @@ function toggleButtons(){
     else {
       document.getElementById("eventCreateButtonIcon").classList.remove('fa-check');
       document.getElementById("eventCreateButtonIcon").classList.add('fa-plus');
+      document.getElementById("eventSearchButton").classList.add('vis');
+      document.getElementById("eventSearchButton").classList.remove('invis');
       document.getElementById("eventCancelButton").classList.remove('vis');
       document.getElementById("eventCancelButton").classList.add('invis');
       createMarkerExists = false;

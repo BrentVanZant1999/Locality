@@ -22,6 +22,12 @@ html, body, #container {
   margin: 0 auto;
   width: 95%;
 }
+#bot-options-wrapper {
+  position: relative;
+  top : 14px;
+  height:50%;
+  width: 95%;
+}
 #main-wrapper {
   position: absolute;
   bottom: 5%;
@@ -29,10 +35,10 @@ html, body, #container {
   width: 100%;
 }
 .invis{
-  visibility: hidden;
+  display : none;
 }
 .vis{
-  visibility: visible;
+  display : block;
 }
 .button-circle {
   position:relative;
@@ -46,6 +52,19 @@ html, body, #container {
   background-color: #EDF5E1;
   color: #1A1A1D;
 }
+.button-option {
+  position:relative;
+  z-index: 1000;
+  width: 40px;
+  height: 40px;
+  font-size: 18px;
+  margin: 10px;
+  border-radius: 50%;
+  text-align:center;
+  line-height:220%;
+  background-color: #EDF5E1;
+  color: #1A1A1D;
+}
 .button-circle-locate {
   position:absolute;
   top: 78px;
@@ -56,14 +75,9 @@ html, body, #container {
   font-size: 12px;
   line-height:245%;
   border-radius: 14px;
+  text-align:center;
   background-color: #EDF5E1;
   color: #1A1A1D;
-}
-.btn-top-right {
-  position:absolute;
-  top: 78px;
-  left: 12px;
-  z-index: 1000;
 }
 .btn-left{
   float:left;
@@ -72,34 +86,10 @@ html, body, #container {
   float:right;
 }
 .slider {
-  -webkit-appearance: none;
   width: 100%;
   height: 15px;
-  border-radius: 5px;
-  background: rgba(0, 0, 0, 0.1);
-  outline: none;
-  opacity: 0.7;
-  -webkit-transition: .2s;
-  transition: opacity .2s;
 }
 
-.slider::-webkit-slider-thumb {
-  -webkit-appearance: none;
-  appearance: none;
-  width: 12px;
-  height: 12px;
-  border-radius: 50%;
-  background: #24305E;
-  cursor: pointer;
-}
-
-.slider::-moz-range-thumb {
-  width: 12px;
-  height: 12px;
-  border-radius: 50%;
-  background: #24305E;
-  cursor: pointer;
-}
 .centeredText {
   display:block;
   text-align:center;

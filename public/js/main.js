@@ -3,7 +3,9 @@
  */
 var eventsLocationRef = firebase.database().ref('eventsLocations');
 var geoFire;
-var searchRadius = 2;
+var baseSearchRadius = 2;
+var searchRadius = baseSearchRadius;
+var filterCode = 111111;
 moment().format();
 /*
  * Creates the marker that users use to plan where there event will take place
@@ -59,17 +61,19 @@ function startDatabaseQuery() {
   var onKeyEnteredRegistration = geoQuery.on("key_entered", function(key, location) {
     var eventRef = firebase.database().ref('events/' + key);
       eventRef.on('value', function(snapshot) {
-        var title = snapshot.val().title;
-        var org = snapshot.val().org;
-        var type = snapshot.val().type;
-        var endTime = snapshot.val().endTime;
-        var lat = location[0];
-        var lng =  location[1];
-        var description = snapshot.val().description;
-        if (endTime != null) {
-          createEventMarker(lat,lng,title,org,type,endTime,description);
-        }
-      });
+          if (snapshot.val() != null) {
+          var title = snapshot.val().title;
+          var org = snapshot.val().org;
+          var type = snapshot.val().type;
+          var endTime = snapshot.val().endTime;
+          var lat = location[0];
+          var lng =  location[1];
+          var description = snapshot.val().description;
+          if (endTime != null) {
+            createEventMarker(lat,lng,title,org,type,endTime,description);
+          }
+      }
+    });
   });
   var onReadyRegistration = geoQuery.on("ready", function() {
     geoQuery.cancel();
@@ -236,6 +240,17 @@ function handleMarkerClick(e) {
   updateEventModal(this.options.title,this.options.org,this.options.description,this.options.duration);
   $('#bottomPopup').modal('show');
 }
+
+/*
+ * Takes a marker click event ( e == event reference when it happens)
+ * and calls update event modal given the particular markers information
+ * it then shows the modal with event information
+ */
+function handleSearchClick() {
+  updateSearchModal(searchRadius, filterCode);
+  $('#searchModal').modal('show');
+}
+
 
 /*
  * Checks html elements in the event creation modal. Sends out an alert if
