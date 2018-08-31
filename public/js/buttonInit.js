@@ -20,6 +20,12 @@ $('#eventInputButton').on('click', function(e) {
 $('#eventSearchButton').on('click', function(e) {
   handleSearchClick();
 });
+$('#closeSearch').on('click', function(e) {
+  $('#searchModal').style="display:none;";
+  console.log("In here");
+});
+
+
 
 /*
  *  Slider management
@@ -142,10 +148,6 @@ $('#submitEvent').on('click', function(){
  * when clicked call the cancel button function
  */
 $('#eventCancelButton').on('click', function(){
-  cancelButton();
-});
-
-$('#cancelEventCreation').on('click', function(){
   cancelButton();
 });
 /*

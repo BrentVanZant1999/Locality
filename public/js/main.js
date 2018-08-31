@@ -247,7 +247,7 @@ function handleMarkerClick(e) {
  * it then shows the modal with event information
  */
 function handleSearchClick() {
-  updateSearchModal(searchRadius, filterCode);
+//  updateSearchModal(searchRadius, filterCode);
   $('#searchModal').modal('show');
 }
 

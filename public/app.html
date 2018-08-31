@@ -57,11 +57,18 @@
     </div>
     <span id="locator" class="button-circle-locate vis"><i class="fa fa-compass fa-lg"></i></span>
   </div>
+
   <div class="modal fade" id="eventCreateModal" tabindex="-1" role="dialog" data-backdrop="static" data-keyboard="false" aria-labelledby="myModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered modal-sm" role="document">
+    <div class="modal-dialog modal-dialog-centered modal-sm modal-notify modal-warning" role="document">
         <div class="modal-content">
+          <div class="modal-header" style="background-color:#1A1A1D;">
+            <p class="heading">Create An Event</p>
+
+            <button id ="cancelEventCreation" type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true" class="white-text">×</span>
+            </button>
+          </div>
           <form class="text-center border border-light p-3">
-    <h4 class="mb-w2">Create an Event</h4>
     <input type="text" id="titleEventInput" class="form-control mb-2" placeholder="Event name">
     <input type="text" id="organizationEventInput" class="form-control mb-2" placeholder="Event organization">
     <div class = "row">
@@ -91,10 +98,7 @@
 
     <div class = "row">
       <div class = "col">
-        <button id="cancelEventCreation" class="btn btn-danger btn-block">Cancel</button>
-      </div>
-      <div class = "col">
-        <button id="submitEvent" class="btn btn-info btn-block">Submit</button>
+        <button id="submitEvent" class="btn btn-outline-elegant btn-block">Submit</button>
       </div>
     </div>
 </form>
@@ -102,7 +106,7 @@
     </div>
 </div>
 
-<!-- Frame Modal Bottom -->
+<!-- Frame Modal Bottom
 <div class="modal fade bottom" id="bottomPopup" tabindex="1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-side modal-bottom-left modal-sm" role="document">
       <div class="modal-content">
@@ -119,31 +123,54 @@
       </div>
     </div>
   </div>
-  <!-- Frame Modal Bottom -->
-
-  <!-- Frame Modal Bottom -->
-  <div class="modal fade left show modal-scrolling" id="searchModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" data-backdrop="false" style="padding-right: 14px; display: block;">
+-->
+  <div class="modal fade left show modal-scrolling" id="bottomPopup" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
       <div class="modal-dialog modal-side modal-bottom-left modal-notify modal-warning" role="document">
-        <!--Content-->
         <div class="modal-content">
-          <!--Header-->
-          <div class="modal-header">
-            <p class="heading">Modal Warning</p>
-
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <div class="modal-header" style="background-color:#1A1A1D;">
+            <p class="heading">Event Information</p>
+            <button id ="closeEvent" type="button" class="close" data-dismiss="modal" aria-label="Close">
               <span aria-hidden="true" class="white-text">×</span>
             </button>
           </div>
-
-          <!--Body-->
           <div class="modal-body">
+            <div class="row">
+              <div class="col-3 text-center">
+                <p class="title mb-0"><span id="eventTitle" class="light-blue-text centeredText h3"></span></p>
+                <p class="text-muted " style="font-size: 13px"><span class="h6 teal-text" id="eventOrganization"></span></p>
+              </div>
+              <div class="col-9">
+                <p><span id="eventDuration" class="red-text"></span></p>
+                <p class="card-text">
+                  <strong><span class="text-monospace" id="eventDescription"><span></strong>
+                </p>
+              </div>
+            </div>
+          </div>
+          <div class="modal-footer justify-content-center">
+            <a type="button" class="btn  btn-outline-elegant waves-effect" data-dismiss="modal">Update Search</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  <!-- Frame Modal Bottom -->
 
+  <!-- Frame Modal Bottom -->
+  <div class="modal fade left show modal-scrolling" id="searchModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+      <div class="modal-dialog modal-side modal-bottom-left modal-notify modal-warning" role="document">
+        <div class="modal-content">
+          <div class="modal-header" style="background-color:#1A1A1D;">
+            <p class="heading">Update Your Search</p>
+            <button id ="closeSearch" type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true" class="white-text">×</span>
+            </button>
+          </div>
+          <div class="modal-body">
             <div class="row">
               <div class="col-3 text-center">
                 <p class="title mb-0">Social</p>
                 <p class="text-muted " style="font-size: 13px">Event</p>
               </div>
-
               <div class="col-9">
                 <p>Event Title </p>
                 <p class="card-text">
@@ -151,16 +178,11 @@
                 </p>
               </div>
             </div>
-
-
           </div>
-
-          <!--Footer-->
           <div class="modal-footer justify-content-center">
-            <a type="button" class="btn btn-outline-warning waves-effect" data-dismiss="modal">Update Search</a>
+            <a type="button" class="btn  btn-outline-elegant waves-effect" data-dismiss="modal">Update Search</a>
           </div>
         </div>
-        <!--/.Content-->
       </div>
     </div>
     <!-- Frame Modal Bottom -->
