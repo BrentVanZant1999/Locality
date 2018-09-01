@@ -5,6 +5,7 @@ var eventsLocationRef = firebase.database().ref('eventsLocations');
 var geoFire;
 var baseSearchRadius = 1; //in kilometers
 var searchRadius = baseSearchRadius;
+var currentRadius = searchRadius;
 var filterCode = 111111;
 var radiusGroup = L.featureGroup();
 var circle;
@@ -14,6 +15,7 @@ var sportingSelected = true;
 var marketSelected = true;
 var techSelected = true;
 var healthSelected = true;
+var showRadius = false;
 moment().format();
 /*
  * Creates the marker that users use to plan where there event will take place
@@ -251,7 +253,7 @@ function handleMarkerClick(e) {
  */
 function handleSearchClick() {
   //  updateSearchModal(searchRadius, filterCode);
-  // toggleSearchGraphic();
+  toggleSearchGraphic();
   $('#searchModal').modal('show');
 }
 
@@ -264,36 +266,72 @@ function handleFilterClick(inputClick) {
   if (inputClick == 1) {
     selectedButton = document.getElementById("socialFade");
     selectedIcon = document.getElementById("socialIcon");
+    if (socialSelected == true) {
+      mymap.removeLayer(socialEvents);
+    }
+    else {
+      socialEvents.addTo(mymap);
+    }
     isSelected = socialSelected;
     socialSelected = !socialSelected;
   }
   else if (inputClick == 2) {
     selectedButton = document.getElementById("sportingFade");
     selectedIcon = document.getElementById("sportingIcon");
+    if (sportingSelected == true) {
+      mymap.removeLayer(sportingEvents);
+    }
+    else {
+      sportingEvents.addTo(mymap);
+    }
     isSelected = sportingSelected;
     sportingSelected = !sportingSelected;
   }
   else if (inputClick == 3) {
     selectedButton = document.getElementById("academicFade");
     selectedIcon = document.getElementById("academicIcon");
+    if (academicSelected == true) {
+      mymap.removeLayer(academicEvents);
+    }
+    else {
+      academicEvents.addTo(mymap);
+    }
     isSelected = academicSelected;
     academicSelected = !academicSelected;
   }
   else if (inputClick == 4) {
     selectedButton = document.getElementById("marketFade");
     selectedIcon = document.getElementById("marketIcon");
+    if (marketSelected == true) {
+      mymap.removeLayer(marketEvents);
+    }
+    else {
+      marketEvents.addTo(mymap);
+    }
     isSelected = marketSelected;
     marketSelected = !marketSelected;
   }
   else if (inputClick == 5) {
     selectedButton = document.getElementById("techFade");
     selectedIcon = document.getElementById("techIcon");
+    if (techSelected == true) {
+      mymap.removeLayer(techEvents);
+    }
+    else {
+      techEvents.addTo(mymap);
+    }
     isSelected = techSelected;
     techSelected = !techSelected;
   }
   else if (inputClick == 6) {
     selectedButton = document.getElementById("healthFade");
     selectedIcon = document.getElementById("healthIcon");
+    if (healthSelected == true) {
+      mymap.removeLayer(healthEvents);
+    }
+    else {
+      healthEvents.addTo(mymap);
+    }
     isSelected = healthSelected;
     healthSelected = !healthSelected;
   }
@@ -321,7 +359,7 @@ function toggleSearchGraphic() {
          color: 'white',
          fillColor: 'white',
          fillOpacity: 0.2,
-         radius: baseSearchRadius*1000
+         radius: currentRadius*1000
      }).addTo(mymap);
    }
 }

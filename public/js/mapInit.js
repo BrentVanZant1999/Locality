@@ -41,7 +41,7 @@ var markerUI;
  * mymap.options holds map settings. Setting's should be set here. Currently
  * only zooms have been set.
  */
-mymap.options.minZoom = 14;
+mymap.options.minZoom = 13;
 mymap.options.maxZoom = maxMapZoom;
 
 /*

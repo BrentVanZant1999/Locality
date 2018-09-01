@@ -22,7 +22,11 @@ $('#eventSearchButton').on('click', function(e) {
 });
 $('#closeSearch').on('click', function(e) {
   $('#searchModal').style="display:none;";
-  console.log("In here");
+  toggleSearchGraphic();
+});
+$('#updateSearch').on('click', function(e) {
+  $('#searchModal').style="display:none;";
+  toggleSearchGraphic();
 });
 
 $('#socialFade').on('click', function(e) {
@@ -44,6 +48,25 @@ $('#healthFade').on('click', function(e) {
   handleFilterClick(6);
 });
 
+
+var searchSlider = document.getElementById("searchRadiusSlider");
+var displayRadius = document.getElementById("searchRadiusDisplay");
+var input = searchRadius;
+displayRadius.innerHTML = input;
+searchSlider.oninput = function() {
+  input = searchSlider.value;
+  displayRadius.innerHTML = input;
+  currentRadius = input;
+  console.log(currentRadius);
+  mymap.removeLayer(circle);
+  circle = undefined;
+  circle = L.circle([curLat, curLng], {
+      color: 'white',
+      fillColor: 'white',
+      fillOpacity: 0.2,
+      radius: currentRadius*1000
+  }).addTo(mymap);
+}
 
 /*
  *  Slider management

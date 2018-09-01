@@ -172,7 +172,8 @@
           <div class="modal-body">
             <div class="row">
               <div class="col">
-                <input type="number" id="titleEventInput" class="form-control mb-2" placeholder="Search Radius">
+                  <label for='searchRadiusSlider'>Search Radius: <span class="formSubtext" id="searchRadiusDisplay"></span> km</label>
+                  <input id='searchRadiusSlider' class="slider"type="range"  value="1" min="0.1" max="10" step="0.1">
               </div>
             </div>
             <div class="row">
@@ -187,7 +188,7 @@
             </div>
           </div>
           <div class="modal-footer justify-content-center">
-            <a type="button" class="btn  btn-outline-elegant waves-effect" data-dismiss="modal">Update Search</a>
+            <a id="updateSearch" type="button" class="btn  btn-outline-elegant waves-effect" data-dismiss="modal">Update Search</a>
           </div>
         </div>
       </div>
