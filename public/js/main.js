@@ -349,6 +349,13 @@ function handleFilterClick(inputClick) {
   }
 }
 
+
+
+
+/*
+ * Checks if a cirle layer is defined on the map.
+ * If it is it gets removed if not a circle layer is added.
+ */
 function toggleSearchGraphic() {
   if (circle != undefined) {
      mymap.removeLayer(circle);
