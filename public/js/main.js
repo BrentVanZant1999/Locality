@@ -16,7 +16,9 @@ var marketSelected = true;
 var techSelected = true;
 var healthSelected = true;
 var showRadius = false;
+//initalize moment javascript formatting
 moment().format();
+
 /*
  * Creates the marker that users use to plan where there event will take place
  */
@@ -257,6 +259,11 @@ function handleSearchClick() {
   $('#searchModal').modal('show');
 }
 
+/*
+ * Handles the event of a filter button being clicked.
+ * Updates what layers are drawn to the leaflet map based
+ * of which buttons where clicked.
+ */
 function handleFilterClick(inputClick) {
   //  updateSearchModal(searchRadius, filterCode);
   // toggleSearchGraphic();

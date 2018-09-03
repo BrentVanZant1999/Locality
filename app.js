@@ -9,4 +9,3 @@ app.get('/app', function (req, res) {
  res.sendfile(__dirname + '/public/app.html');
 });
 app.listen(PORT);
-console.log("Server started.");

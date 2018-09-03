@@ -1,34 +1,42 @@
+//get a reference to the event creation modal
 var createModal = document.getElementById('eventCreateModal');
+//track whether or not the user is in a modal
 var inModal = false;
-var createMarkerExists = false;
-/*
- * Event type card selection handling
 
-$('.formCard').on('click', function(e) {
-  e.preventDefault();
-  $('.formCard').removeClass('active');
-  $(this).addClass('active');
-});
- */
 /*
- * Modal Submission Handling
+ * Button input handling for the event input button
  */
 $('#eventInputButton').on('click', function(e) {
   e.preventDefault();
   return false;
 });
+
+/*
+ * Button input handling for the event input button
+ */
 $('#eventSearchButton').on('click', function(e) {
   handleSearchClick();
 });
+
+/*
+ * Button input handling for the close search modal button
+ */
 $('#closeSearch').on('click', function(e) {
   $('#searchModal').style="display:none;";
   toggleSearchGraphic();
 });
+
+/*
+ * Button input handling for the update search modal button
+ */
 $('#updateSearch').on('click', function(e) {
   $('#searchModal').style="display:none;";
   toggleSearchGraphic();
 });
 
+/*
+ * Below are filter button handlers.
+ */
 $('#socialFade').on('click', function(e) {
   handleFilterClick(1);
 });
@@ -49,8 +57,15 @@ $('#healthFade').on('click', function(e) {
 });
 
 
+/*
+ * Get references to the search radius slider and input elements
+ */
 var searchSlider = document.getElementById("searchRadiusSlider");
 var displayRadius = document.getElementById("searchRadiusDisplay");
+
+/*
+ *  Handle changing user input on the search radius slider.
+ */
 var input = searchRadius;
 displayRadius.innerHTML = input;
 searchSlider.oninput = function() {
@@ -69,10 +84,14 @@ searchSlider.oninput = function() {
 }
 
 /*
- *  Slider management
+ * Get references to the duration slider and input elements
  */
  var durationSlider = document.getElementById("eventDurationInput");
  var displaySlider = document.getElementById("displayDuration");
+
+ /*
+  *  Handle changing user input on the search radius slider.
+  */
  var minutesInput = durationSlider.value;
  var hoursDisplay = Math.floor(minutesInput/60);
  var minutesDisplay = (minutesInput%60);
@@ -227,6 +246,3 @@ function toggleButtons(){
       createMarkerExists = false;
     }
 }
-/*
- * handle click out of modal
- */
