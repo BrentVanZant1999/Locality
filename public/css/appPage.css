@@ -56,7 +56,7 @@ html, body, #container {
   border-radius: 50%;
   text-align:center;
   line-height:300%;
-  background-color: #EDF5E1;
+  background-color: white;
   color: #1A1A1D;
 }
 .button-circle:hover {
@@ -115,7 +115,7 @@ html, body, #container {
   line-height:245%;
   border-radius: 14px;
   text-align:center;
-  background-color: #EDF5E1;
+  background-color: white;
   color: #1A1A1D;
 }
 .button-circle-locate:hover {

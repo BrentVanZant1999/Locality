@@ -2,7 +2,7 @@
 var createModal = document.getElementById('eventCreateModal');
 //track whether or not the user is in a modal
 var inModal = false;
-
+var createMarkerExists = false
 /*
  * Button input handling for the event input button
  */
@@ -30,8 +30,13 @@ $('#closeSearch').on('click', function(e) {
  * Button input handling for the update search modal button
  */
 $('#updateSearch').on('click', function(e) {
-  $('#searchModal').style="display:none;";
-  toggleSearchGraphic();
+  searchRadius = currentRadius;
+  geoQuery = geoFire.query({
+    center: [curLat, curLng],
+    radius: searchRadius
+  });
+    toggleSearchGraphic();
+      $('#searchModal').style="display:none;";
 });
 
 /*
@@ -55,33 +60,6 @@ $('#techFade').on('click', function(e) {
 $('#healthFade').on('click', function(e) {
   handleFilterClick(6);
 });
-
-
-/*
- * Get references to the search radius slider and input elements
- */
-var searchSlider = document.getElementById("searchRadiusSlider");
-var displayRadius = document.getElementById("searchRadiusDisplay");
-
-/*
- *  Handle changing user input on the search radius slider.
- */
-var input = searchRadius;
-displayRadius.innerHTML = input;
-searchSlider.oninput = function() {
-  input = searchSlider.value;
-  displayRadius.innerHTML = input;
-  currentRadius = input;
-  console.log(currentRadius);
-  mymap.removeLayer(circle);
-  circle = undefined;
-  circle = L.circle([curLat, curLng], {
-      color: 'white',
-      fillColor: 'white',
-      fillOpacity: 0.2,
-      radius: currentRadius*1000
-  }).addTo(mymap);
-}
 
 /*
  * Get references to the duration slider and input elements
@@ -210,6 +188,7 @@ $('#submitEvent').on('click', function(){
 $('#eventCancelButton').on('click', function(){
   cancelButton();
 });
+
 /*
  * Change the buttons display back to the normal display and remove the ui
  * marker
