@@ -57,12 +57,12 @@ initApp = function() {
     console.log(error);
   });
 };
-
+var geoQuery;
 /*
  * Queries firebase for event info
  */
 function startDatabaseQuery() {
-  var geoQuery = geoFire.query({
+  geoQuery = geoFire.query({
     center: [curLat, curLng],
     radius: searchRadius
   });
