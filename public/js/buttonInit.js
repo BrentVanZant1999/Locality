@@ -2,7 +2,8 @@
 var createModal = document.getElementById('eventCreateModal');
 //track whether or not the user is in a modal
 var inModal = false;
-var createMarkerExists = false
+var createMarkerExists = false;
+var userCreated = false;
 /*
  * Button input handling for the event input button
  */
@@ -165,6 +166,15 @@ $('#cancelEventCreation').on('click', function(){
 });
 
 /*
+ *  Placeholder
+ */
+$('#eventDeleteButton').on('click', function(){
+  /*
+   * Handles Event Deletion
+   */
+});
+
+/*
  * Give the eventCreateButton the property:
  * when clicked check if the form is correct and if so remove the ui marker and
  * call writeUserEvent to write the data to firebase.
@@ -173,6 +183,10 @@ $('#submitEvent').on('click', function(){
   if (validateEventInput()) {
     mymap.removeLayer(markerGroupUI);
     writeUserEvent();
+    $('#eventCreateButton').classList.add('invis');
+    $('#eventCreateButton').classList.remove('vis');
+    $('#eventDeleteButton').classList.add('vis');
+    $('#eventDeleteButton').classList.remove('invis');
     hasLocation=false;
     inModal=false;
   }
