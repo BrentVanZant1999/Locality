@@ -182,11 +182,14 @@ $('#eventDeleteButton').on('click', function(){
 $('#submitEvent').on('click', function(){
   if (validateEventInput()) {
     mymap.removeLayer(markerGroupUI);
+    console.log("Here");
     writeUserEvent();
-    $('#eventCreateButton').classList.add('invis');
-    $('#eventCreateButton').classList.remove('vis');
-    $('#eventDeleteButton').classList.add('vis');
-    $('#eventDeleteButton').classList.remove('invis');
+    console.log("Here");
+    document.getElementById("eventCreateButton").classList.add('invis');
+    document.getElementById("eventCreateButton").classList.remove('vis');
+    document.getElementById("eventDeleteButton").classList.add('vis');
+    document.getElementById("eventDeleteButton").classList.remove('invis');
+    console.log("And here");
     hasLocation=false;
     inModal=false;
   }
