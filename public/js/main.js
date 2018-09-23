@@ -44,17 +44,28 @@ function createNewEventMarker() {
 initApp = function() {
   firebase.auth().onAuthStateChanged(function(user) {
     if (user) {
+    var authData = ref.getAuth();
+    var userid = getUser(authData);
+
        var displayName = user.displayName;
        var email = user.email;
        var uid = user.uid;
        firebase.database();
        eventsLocationRef = firebase.database().ref('eventsLocations');
        geoFire = new GeoFire(eventsLocationRef);
+       firebase.database().ref().child("users").orderByChild("username").equalTo(username_here).on("value", function(snapshot) {
+         if (snapshot.exists()) {
+           console.log("exists");
+         }
+         else{
+           console.log("doesn't exist");
+         }
+        });
+       //check if user exists here.
        writeUserData(uid, email, displayName);
        startDatabaseQuery();
     }
   }, function(error) {
-    //TODO figure out what to do with errors... how to display to users?
     console.log(error);
   });
 };
