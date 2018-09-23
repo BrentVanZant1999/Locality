@@ -75,4 +75,4 @@ function onLocationError(e) {
    zoomControl: true,
    id: 'mapbox.streets',
    accessToken: 'pk.eyJ1IjoiYnZhbmNhciIsImEiOiJjamw1bXJhdzYyb2ZrM3dsbXZiOG95dDBiIn0.M1PGjDxwxEZXEwk0r5qJEA'
- }).addTo(mymap);
+}).addTo(mymap);

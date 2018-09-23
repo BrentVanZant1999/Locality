@@ -1,3 +1,4 @@
+
 /* creates a class that extends the leaflet Marker base class.
  * defined within this new class is a bunch of fields for information about
  * events that will need to be stored in markers.

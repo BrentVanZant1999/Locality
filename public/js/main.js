@@ -1,5 +1,6 @@
 /*
  * Constant Declerations
+ * Updated
  */
 var eventsLocationRef = firebase.database().ref('eventsLocations');
 var geoFire;
@@ -434,9 +435,9 @@ function writeUserEvent() {
    type: parseInt(typeInput.value),
    org: orgInput.value
  }).getKey();
+   userCreated = true;
   //one api call
   geoFire.set(eventID, [tempLat, tempLng]).then(function() {
-  console.log("Provided key has been added to GeoFire");
     }, function(error) {
   console.log("Error: " + error);
   });

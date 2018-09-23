@@ -1,0 +1,22 @@
+{
+  /* Visit https://firebase.google.com/docs/database/security to learn more about security rules. */
+  "rules": {
+    "users": {
+      "$uid": {
+        ".read": "$uid === auth.uid",
+        ".write": "$uid === auth.uid"
+      }
+    },
+    "events": {
+      ".read": true,
+      "$uid": {
+        ".validate": "$uid == auth.uid",
+        ".write": "!data.exists() || !newData.exists()"
+      }
+    },
+    "eventsLocations": {
+      ".read": true,
+      ".write": true
+    }
+  }
+}
