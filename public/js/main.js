@@ -2,6 +2,7 @@
  * Constant Declerations
  * Updated
  */
+
 var eventsLocationRef = firebase.database().ref('eventsLocations');
 var geoFire;
 var baseSearchRadius = 1; //in kilometers
@@ -17,6 +18,9 @@ var marketSelected = true;
 var techSelected = true;
 var healthSelected = true;
 var showRadius = false;
+
+//user events tracking
+var gloablUser = undefined;
 //initalize moment javascript formatting
 moment().format();
 
@@ -44,25 +48,15 @@ function createNewEventMarker() {
 initApp = function() {
   firebase.auth().onAuthStateChanged(function(user) {
     if (user) {
-    var authData = ref.getAuth();
-    var userid = getUser(authData);
-
        var displayName = user.displayName;
        var email = user.email;
        var uid = user.uid;
+       globalUser = user.uid;
        firebase.database();
        eventsLocationRef = firebase.database().ref('eventsLocations');
        geoFire = new GeoFire(eventsLocationRef);
-       firebase.database().ref().child("users").orderByChild("username").equalTo(username_here).on("value", function(snapshot) {
-         if (snapshot.exists()) {
-           console.log("exists");
-         }
-         else{
-           console.log("doesn't exist");
-         }
-        });
        //check if user exists here.
-       writeUserData(uid, email, displayName);
+       userExistsIn(uid, email, displayName);
        startDatabaseQuery();
     }
   }, function(error) {
@@ -98,6 +92,22 @@ function startDatabaseQuery() {
   var onReadyRegistration = geoQuery.on("ready", function() {
     geoQuery.cancel();
   });
+}
+
+function userExistsIn( uid, email, displayName ){
+  var returnBool = false;
+  firebase.database().ref(`users/${uid}`).once("value", snapshot => {
+    if (snapshot.exists()){
+      console.log("User In");
+      returnBool = true;
+    }
+    else {
+      returnBool = false;
+        console.log("New User");
+      writeUserData(uid, email, displayName);
+    }
+  });
+  return returnBool;
 }
 
 /*
@@ -403,6 +413,7 @@ function validateEventInput() {
   var timeInput = document.getElementById("eventDurationInput");
   var descriptionInput = document.getElementById("eventDescriptionInput");
   var typeInput = document.getElementById("eventDurationInput");
+
   if (typeInput.value === ""){
     alert("Event type needed");
     return false;
@@ -419,9 +430,27 @@ function validateEventInput() {
     alert("End time needed");
     return false;
   }
+
   titleInput.value = handleCasing(titleInput.value);
   orgInput.value = handleCasing(orgInput.value);
+  firebase.database().ref(`users/${gloablUser}/hasEvent`).set(true);
+  var hasEvent = false;
+  firebase.database().ref(`users/${gloablUser}/hasEvent`).once("value", snapshot => {
+   if (snapshot.val() == true){
+      console.log("hasEvent already");
+      hasEvent =  false;
+    }
+    else {
+      firebase.database().ref(`users/${gloablUser}/hasEvent`).set(true);
+      hasEvent = true;
+    }
+  });
+  if ( hasEvent == false ) {
+    alert("You already have an event ongoing");
+    return false;
+  }
   return true;
+
 }
 
 /*
@@ -461,7 +490,8 @@ function writeUserEvent() {
 function writeUserData(userId, email, displayName ) {
   firebase.database().ref('users/' + userId).set({
     username: displayName,
-    email: email
+    email: email,
+    hasEvent: false
   });
 }
 
