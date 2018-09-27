@@ -435,6 +435,7 @@ function validateEventInput() {
   orgInput.value = handleCasing(orgInput.value);
   firebase.database().ref(`users/${gloablUser}/hasEvent`).set(true);
   var hasEvent = false;
+  /* Limit user to one event
   firebase.database().ref(`users/${gloablUser}/hasEvent`).once("value", snapshot => {
    if (snapshot.val() == true){
       console.log("hasEvent already");
@@ -449,6 +450,7 @@ function validateEventInput() {
     alert("You already have an event ongoing");
     return false;
   }
+    */
   return true;
 
 }
